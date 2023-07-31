@@ -9,10 +9,10 @@ if (isset($_SESSION['usuario'])) {
 		<div class="row">
 			<div class="col-sm-12" style="text-align: center;">
 				<div class="jumbotron">
-					<h1 class="display-4">Gestor de archivos </h1>
-					<p class="lead">Almacena, Gestiona y  organiza tus archivo de manera más eficiente.</p>
+					<h1 class="display-4">Sistema Control de paradas de vehiculos </h1>
+					<p class="lead">Velando siempre por el bienestar de la población</p>
 					<hr class="my-4">
-					<p><img src="../img/logo2.jpg" class="img-thumbnail" width="300px" /></p>
+					<p><img src="../img/Logo PNC.png" class="img-thumbnail" width="300px" /></p>
 					<p class="lead">
 						<a class="btn btn-primary btn-lg" href="categorias.php" role="button">Bienvenido</a>
 					</p>

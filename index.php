@@ -15,8 +15,8 @@
     <!-- Icon -->
     <div class="fadeIn first">
       <p></p>
-      <img src="img/logo1.jpg" class="img-thumbnail" width="80px" id="icon" alt="User Icon" />
-      <h1>Gestor de archivos</h1>
+      <img src="img/Logo PNC.png" class="img-thumbnail" width="80px" id="icon" alt="User Icon" />
+      <h1>Control de vehículos</h1>
     </div>
 
 
