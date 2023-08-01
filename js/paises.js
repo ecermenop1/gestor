@@ -16,8 +16,8 @@ function AddPaises() {
 				respuesta = respuesta.trim();
 				
 				if (respuesta == 1) {
-					$('#tablaCategorias').load("categorias/tablaCategoria.php");
-					$('#nombreCategoria').val("");
+					
+					$('#tablaPaises').load("categorias/tablaPais.php");
 					swal(":D", "Agregado con exito!", "success");
 				} else {
 					swal(":(", "Fallo al agregar", "error");

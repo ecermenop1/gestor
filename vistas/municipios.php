@@ -13,19 +13,19 @@ if (isset($_SESSION['usuario'])) {
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">Departamentos</h1>
+            <h1 class="display-4">Municipios</h1>
 
             <div class="row">
                 <div class="col-sm-4">
-                    <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaCategoria">
-                        <span class="fas fa-plus-circle"></span> Agregar Nuevo Dpartamento
+                    <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaMuncipio">
+                        <span class="fas fa-plus-circle"></span> Agregar Nuevo Municipio
                     </span>
                 </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-sm-12">
-                    <div id="tablaDepartamentos"></div>
+                    <div id="tablaMunicipios"></div>
                 </div>
             </div>
         </div>
@@ -34,30 +34,30 @@ if (isset($_SESSION['usuario'])) {
 
 
     <!-- Modal -->
-    <div class="modal fade" id="modalAgregaCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalAgregaMuncipio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar nuevo País</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar nuevo Munciipio</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="frmDepartamentos">
-                        <label>Código Departamento </label>
-                        <input type="text" name="CodigoDepartamento" id="CodigoDepartamento" class="form-control">
-                        <label>Nombre Departamento</label>
-                        <input type="text" name="NombreDepartamento" id="NombreDepartamento" class="form-control">
-                        <label>Nombre Departamento</label>
+                    <form id="frmMunicipios">
+                        <label>Código Municipio </label>
+                        <input type="text" name="CodigoMunicipio" id="CodigoMunicipio" class="form-control">
+                        <label>Municipio</label>
+                        <input type="text" name="NombreMunicipio" id="NombreMunicipio" class="form-control">
+                        <label> Departamento</label>
                         <select id="Departamento" name="Departamento" class="form-control" id="specificSizeSelect">
-                            <option selected value="">Seleccionar Pais</option>
+                            <option selected value="">Seleccionar Departamento</option>
                             <?php
-                            $sql = "SELECT PAIS_ID,NOMBRE_PAIS FROM TB_PAIS";
+                            $sql = "SELECT DEPARTAMENTO_ID,DEPARTAMENTO_NOMBRE FROM TB_DEPARTAMENTO";
                             $result = mysqli_query($conexion, $sql);
                             while ($mostrar = mysqli_fetch_array($result)) {
                             ?>
-                                <option value=<?php echo $mostrar['PAIS_ID']; ?>><?php echo $mostrar['NOMBRE_PAIS']; ?></option>
+                                <option value=<?php echo $mostrar['DEPARTAMENTO_ID']; ?>><?php echo $mostrar['DEPARTAMENTO_NOMBRE']; ?></option>
                             <?php
                             }
                             ?>
@@ -66,7 +66,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="btnGuardarDepartamento">Guardar</button>
+                    <button type="button" class="btn btn-primary" id="btnGuardarMunicipio">Guardar</button>
                 </div>
             </div>
         </div>
@@ -105,14 +105,14 @@ if (isset($_SESSION['usuario'])) {
     include "footer.php";
     ?>
     <!--Dependencia de categorias, todas las funciones js de categorias-->
-    <script src="../js/departamentos.js"></script>
+    <script src="../js/municipio.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#tablaDepartamentos').load("categorias/tablaDepartamento.php");
-  
-            $('#btnGuardarDepartamento').click(function() {
-                AddDepartamentos();
+            $('#tablaMunicipios').load("categorias/tablaMunicipioS.php");
+            debugger
+            $('#btnGuardarMunicipio').click(function() {
+                AddMunicipio();
             });
 
             /*$('#btnActualizaCategoria').click(function(){

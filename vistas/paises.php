@@ -95,7 +95,7 @@ if (isset($_SESSION['usuario'])) {
 <script type="text/javascript">
 $(document).ready(function() {
     $('#tablaPaises').load("categorias/tablaPais.php");
-debugger
+
     $('#btnGuardarPais').click(function() {
         AddPaises();
     });
