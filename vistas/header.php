@@ -15,7 +15,7 @@ error_reporting(E_ALL);
     <link rel="stylesheet" type="text/css" href="../librerias/datatable/dataTables.bootstrap4.min.css">
 </head>
 
-<body style="background-color: #7D7C7B">
+<body style="background-color: #e9ecef">
 
 
     <!-- Navigation -->
@@ -51,6 +51,7 @@ error_reporting(E_ALL);
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="paises.php">Paises</a>
                             <a class="dropdown-item" href="departamentos.php">Departamentos</a>
+                            <a class="dropdown-item" href="municipios.php">Municipios</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
