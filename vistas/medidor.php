@@ -13,19 +13,19 @@ if (isset($_SESSION['usuario'])) {
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">Municipios</h1>
+            <h1 class="display-4">Medidor</h1>
 
             <div class="row">
                 <div class="col-sm-4">
                     <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaMuncipio">
-                        <span class="fas fa-plus-circle"></span> Agregar Nuevo Municipio
+                        <span class="fas fa-plus-circle"></span> Nuevo Medidor
                     </span>
                 </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-sm-12">
-                    <div id="tablaMunicipios"></div>
+                    <div id="tablaMedidores"></div>
                 </div>
             </div>
         </div>
@@ -38,35 +38,23 @@ if (isset($_SESSION['usuario'])) {
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar nuevo Muncipio</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Medidor</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="frmMunicipios">
-                        <label>Código Municipio </label>
-                        <input type="text" name="CodigoMunicipio" id="CodigoMunicipio" class="form-control">
-                        <label>Municipio</label>
-                        <input type="text" name="NombreMunicipio" id="NombreMunicipio" class="form-control">
-                        <label> Departamento</label>
-                        <select id="Departamento" name="Departamento" class="form-control" id="specificSizeSelect">
-                            <option selected value="">Seleccionar Departamento</option>
-                            <?php
-                            $sql = "SELECT DEPARTAMENTO_ID,DEPARTAMENTO_NOMBRE FROM TB_DEPARTAMENTO";
-                            $result = mysqli_query($conexion, $sql);
-                            while ($mostrar = mysqli_fetch_array($result)) {
-                            ?>
-                                <option value=<?php echo $mostrar['DEPARTAMENTO_ID']; ?>><?php echo $mostrar['DEPARTAMENTO_NOMBRE']; ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
+                    <form id="frmMedidor">
+                        <label>NUMERO MEDIDOR</label>
+                        <input type="text" name="NumeroMedidor" id="NumeroMedidor" class="form-control">
+                        <label>EMPRESA ELECTRICA</label>
+                        <input type="text" name="EmpresaElectrica" id="EmpresaElectrica" class="form-control">
+                       
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="btnGuardarMunicipio">Guardar</button>
+                    <button type="button" class="btn btn-primary" id="btnGuardarMedidor">Guardar</button>
                 </div>
             </div>
         </div>
@@ -105,14 +93,15 @@ if (isset($_SESSION['usuario'])) {
     include "footer.php";
     ?>
     <!--Dependencia de categorias, todas las funciones js de categorias-->
-    <script src="../js/municipio.js"></script>
+    <script src="../js/medidor.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#tablaMunicipios').load("categorias/tablaMunicipioS.php");
-            debugger
-            $('#btnGuardarMunicipio').click(function() {
-                AddMunicipio();
+            $('#tablaMedidores').load("categorias/tablaMedidores.php");
+            
+            $('#btnGuardarMedidor').click(function() {
+                
+                AddMedidores();
             });
 
             /*$('#btnActualizaCategoria').click(function(){

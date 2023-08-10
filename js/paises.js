@@ -16,7 +16,7 @@ function AddPaises() {
 				respuesta = respuesta.trim();
 				
 				if (respuesta == 1) {
-					
+					$("#frmPaises")[0].reset();
 					$('#tablaPaises').load("categorias/tablaPais.php");
 					swal(":D", "Agregado con exito!", "success");
 				} else {

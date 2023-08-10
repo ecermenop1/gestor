@@ -52,6 +52,9 @@ error_reporting(E_ALL);
                             <a class="dropdown-item" href="paises.php">Paises</a>
                             <a class="dropdown-item" href="departamentos.php">Departamentos</a>
                             <a class="dropdown-item" href="municipios.php">Municipios</a>
+                            <a class="dropdown-item" href="lugarespoblados.php">Lugares Poblados</a>
+                            <a class="dropdown-item" href="medidor.php">Medidor</a>
+                            <a class="dropdown-item" href="personas.php">Personas</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>

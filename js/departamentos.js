@@ -17,6 +17,7 @@ function AddDepartamentos() {
 				respuesta = respuesta.trim();
 				alert(respuesta);
 				if (respuesta == 1) {
+					$("#frmDepartamentos")[0].reset();
 					$('#tablaDepartamentos').load("categorias/tablaDepartamento.php");
 					swal(":D", "Agregado con exito!", "success");
 				} else {

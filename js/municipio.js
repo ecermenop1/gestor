@@ -17,6 +17,7 @@ function AddMunicipio() {
 				respuesta = respuesta.trim();
                 alert(respuesta);
 				if (respuesta == 1) {
+					$("#frmMunicipios")[0].reset();
 					$('#tablaMunicipios').load("categorias/tablaMunicipios.php");
 					
 					swal(":D", "Agregado con exito!", "success");
