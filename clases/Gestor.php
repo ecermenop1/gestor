@@ -5,23 +5,19 @@
 		public function agregaRegistroArchivo($datos) {
 			$conexion = Conectar::conexion();
 			$sql = "INSERT INTO t_archivos (id_usuario,
-											id_categoria,
 											nombre,
 											tipo,
 											ruta,
-											Factura,
-											Nonit,
-											Total)
-							VALUES (?,?,?,?,?,?,?,?)";
+											NUMERO_CASO
+											)
+							VALUES (?,?,?,?,?)";
 			$query = $conexion->prepare($sql);
-			$query->bind_param('iissssss', $datos['idUsuario'],
-										$datos['idCategoria'],
+			$query->bind_param('issss', $datos['idUsuario'],
 										$datos['nombreArchivo'],
 										$datos['tipo'],
 										$datos['ruta'],
-										$datos['nofactura'],
-										$datos['nonit'],
-										$datos['total']);
+										$datos['numerocaso'],
+										);
 										
 
 			$respuesta = $query->execute();

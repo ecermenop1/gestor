@@ -6,23 +6,15 @@
 	$conexion = $c->conexion();
 	$idUsuario = $_SESSION['idUsuario'];
 	$sql = "SELECT 
-				archivos.id_archivo as idArchivo,
-				usuario.nombre as nombreUsuario,
-			    categorias.nombre as categoria,
-			    archivos.nombre as nombreArchivo,
-			    archivos.tipo as tipoArchivo,
-			    archivos.ruta as rutaArchivo,
-			    archivos.fecha as fecha,
-				archivos.Factura as Factura,
-				archivos.Nonit as Nit,
-				archivos.Total as Total
-			FROM
-			    t_archivos AS archivos
-			        INNER JOIN
-			    t_usuarios AS usuario ON archivos.id_usuario = usuario.id_usuario
-			        INNER JOIN
-			    t_categorias AS categorias ON archivos.id_categoria = categorias.id_categoria
-			    and archivos.id_usuario = '$idUsuario'";
+					id_archivo as idArchivo,
+				nombre as nombreArchivo,
+				tipo as tipoArchivo,
+					ruta as rutaArchivo,
+					fecha as fecha,
+					NUMERO_CASO 
+					
+				FROM
+					t_archivos ";
 	$result = mysqli_query($conexion, $sql);
 
  ?>
@@ -36,10 +28,8 @@
 			<table class="table table-hover table-dark" id="tablaGestorDataTable">
 				<thead>
 					<tr>
-						<th>No. Factura</th>
-						<th>No. Nit</th>
-						<th>Total</th>
-						<th>Categoria</th>
+						<th>Numero Caso</th>
+						
 						<th>Archivo</th>
 						<th>Descargar</th>
 						<th>Visualizar</th>
@@ -60,17 +50,13 @@
 						$rutaDescarga = "../archivos/".$idUsuario."/".$mostrar['nombreArchivo'];
 						$nombreArchivo = $mostrar['nombreArchivo'];
 						$idArchivo = $mostrar['idArchivo'];
-						$Fac = $mostrar['Factura'];
-						$Nit = $mostrar['Nit'];
-						$Total = $mostrar['Total'];
+						$NUMEROCASO = $mostrar['NUMERO_CASO'];
+						
 				 ?>
 					<tr>
 					
 					
-					<td><?php echo $Fac;?></td>
-					<td><?php echo $Nit;?></td>
-					<td><?php echo $Total;?></td>
-						<td><?php echo $mostrar['categoria']; ?></td>
+					<td><?php echo $NUMEROCASO;?></td>
 						<td><?php echo $mostrar['nombreArchivo']; ?></td>
 					
 						<td>

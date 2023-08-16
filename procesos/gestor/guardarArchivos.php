@@ -2,10 +2,7 @@
 	session_start();
 	require_once "../../clases/Gestor.php";
 	$Gestor =  new Gestor();
-	$idCategoria = $_POST['categoriasArchivos'];
-	$nofactura = $_POST['nofactura'];
-	$nonit = $_POST['nonit'];
-	$total = $_POST['total'];
+	$numerocaso = $_POST['numerocaso'];
 	$idUsuario = $_SESSION['idUsuario'];
 
 	if($_FILES['archivos']['size'] > 0) {
@@ -27,13 +24,11 @@
 
 			$datosRegistroArchivo = array(
 										"idUsuario" => $idUsuario,
-										"idCategoria" => $idCategoria,
 										"nombreArchivo" => $nombreArchivo,
 										"tipo" => $tipoArchivo,
 										"ruta" => $rutaFinal,
-										"nofactura" => $nofactura,
-										"nonit" => $nonit,
-										"total" => $total
+										"numerocaso" => $numerocaso,
+										
 										);
 
 			if (move_uploaded_file($rutaAlmacenamiento, $rutaFinal)) {

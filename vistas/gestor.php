@@ -33,8 +33,8 @@ if(isset($_SESSION['usuario'])){
 				</div>
 				<div class="modal-body">
 					<form id="frmArchivos" enctype="multipart/form-data">
-						<label>Categoria</label>
-						<div id="categoriasLoad"></div>
+						<label>NÚMERO DE CASO</label>
+						<input type="NUMBRE" name="numerocaso" id="numerocaso" class="form-control" multiple="multiple">
 						<label>Selecciona archivos</label>
 						<input type="file" name="archivos[]" id="archivos" class="form-control" multiple="multiple">
 					</form>
@@ -76,7 +76,7 @@ if(isset($_SESSION['usuario'])){
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('#tablaGestorArchivos').load("gestor/tablaGestor.php");
-			$('#categoriasLoad').load("categorias/selectCategorias.php");
+			//$('#categoriasLoad').load("categorias/selectCategorias.php");
 
 			$('#btnGuardarArchivos').click(function(){
 				agregarArchivosGestor();
