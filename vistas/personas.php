@@ -67,38 +67,38 @@ if (isset($_SESSION['usuario'])) {
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="nombre1">Primer Nombre:</label>
-                                    <input type="text" class="form-control" id="Nombre1" name="Nombre1" placeholder="Nombre1  " required>
+                                    <input type="text" class="form-control" id="Nombre1" name="Nombre1" placeholder="Obligatorio  " required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="nombre2">Segundo Apellido:</label>
-                                    <input type="text" class="form-control" id="Nombre2" name="Nombre2" placeholder="Nombre2">
+                                    <input type="text" class="form-control" id="Nombre2" name="Nombre2" placeholder="Opcional">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1">Tercer Apellido:</label>
-                                    <input type="text" class="form-control" id="Nombre3" name="Nombre3" placeholder="Nombre3">
+                                    <input type="text" class="form-control" id="Nombre3" name="Nombre3" placeholder="Opcional">
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1">Primer Apellido:</label>
-                                    <input type="text" class="form-control" id="Apellido1" name="Apellido1" placeholder="Apellido1 " required>
+                                    <input type="text" class="form-control" id="Apellido1" name="Apellido1" placeholder="Obligatorio " required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1">Segundo Nombre:</label>
-                                    <input type="text" class="form-control" id="Apellido2" name="Apellido2" placeholder="Apellido2" required>
+                                    <input type="text" class="form-control" id="Apellido2" name="Apellido2" placeholder="Obligatorio" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1">Tercer Nombre:</label>
-                                    <input type="text" class="form-control" id="Apellido3" name="Apellido3" placeholder="Apellido3">
+                                    <input type="text" class="form-control" id="Apellido3" name="Apellido3" placeholder="Opcional">
                                 </div>
                             </div>
 
@@ -112,7 +112,7 @@ if (isset($_SESSION['usuario'])) {
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1"> Lugar Nacimiento:</label>
-                                    <input type="input" class="form-control" id="LugarNacimiento" name="LugarNacimiento">
+                                    <input type="input" class="form-control" id="LugarNacimiento" name="LugarNacimiento" placeholder="Opcional">
                                 </div>
                             </div>
 
@@ -131,7 +131,7 @@ if (isset($_SESSION['usuario'])) {
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1"> Numero Documento:</label>
-                                    <input type="text" class="form-control" id="NumeroDocumento" name="NumeroDocumento">
+                                    <input type="text" class="form-control" id="NumeroDocumento" name="NumeroDocumento" placeholder="Obligatorio">
                                 </div>
                             </div>
 
@@ -148,21 +148,21 @@ if (isset($_SESSION['usuario'])) {
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1"> Nacionalidad:</label>
-                                    <input type="text" class="form-control" id="Nacionalidad" name="Nacionalidad">
+                                    <input type="text" class="form-control" id="Nacionalidad" name="Nacionalidad" placeholder="Obligatorio">
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1"> Direccion:</label>
-                                    <input type="text" class="form-control" id="Direccion" name="Direccion">
+                                    <input type="text" class="form-control" id="Direccion" name="Direccion" placeholder="Obligatorio">
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1"> Nombre Padre:</label>
-                                    <input type="text" class="form-control" id="NombrePadre" name="NombrePadre">
+                                    <input type="text" class="form-control" id="NombrePadre" name="NombrePadre" placeholder="Obligatorio">
                                 </div>
                             </div>
 
@@ -170,28 +170,28 @@ if (isset($_SESSION['usuario'])) {
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1"> Nombre Madre:</label>
-                                    <input type="text" class="form-control" id="NombreMadre" name="NombreMadre">
+                                    <input type="text" class="form-control" id="NombreMadre" name="NombreMadre" placeholder="Obligatorio">
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1"> Telefono:</label>
-                                    <input type="text" class="form-control" id="Telefono" name="Telefono">
+                                    <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Opcional">
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1"> Alias:</label>
-                                    <input type="text" class="form-control" id="Alias" name="Alias">
+                                    <input type="text" class="form-control" id="Alias" name="Alias" placeholder="Opcional">
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1"> Fotografia:</label>
-                                    <input type="file" name="imagen"  multiple="multiple" class="form-control" id="Alias">
+                                    <input type="file" name="imagen"  multiple="multiple" class="form-control" id="Alias" placeholder="Opcional">
                                 </div>
                             </div>
 
