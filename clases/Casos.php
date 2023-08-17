@@ -13,22 +13,59 @@ class Casos extends Conectar
                                             ORGANIZACION,
                                             FECHA_INICIO_CASO,
                                             FECHA_CIERRE_CASO,
-                                            ESTADO  
+                                            ESTADO, 
+                                            DIRECCION_ID
                                           ) 
-							VALUES (?,?,?,?,?,?)";
+							VALUES (?,?,?,?,?,?,?)";
         $query = $conexion->prepare($sql);
         $query->bind_param(
-            "sissss",
+            "sissssi",
             $datos['NumeroCaso'],
             $datos['IdPropietario'],
             $datos['Organizacion'],
             $datos['FechaInicio'],
             $datos['FechaFin'],
-            $datos['Estado']  
+            $datos['Estado'],
+            $datos['IdDireccion']  
         );
         $respuesta = $query->execute();
         $query->close();
 
+        return $respuesta;
+    }
+
+    public function obtenerCaso($idCaso) {
+        $conexion = Conectar::conexion();
+
+        $sql = "SELECT *
+                FROM TB_CASO 
+                WHERE CASO_ID ='$idCaso'";
+        $result = mysqli_query($conexion, $sql);
+
+        $caso = mysqli_fetch_array($result);
+
+        return $caso;
+    }
+
+    public function ActualizarCasos($datos) {
+        $conexion = Conectar::conexion();
+
+        $sql = "UPDATE TB_CASO
+                SET NUMERO_CASO = ?,PROPIETARIO_ID  = ?,ORGANIZACION = ?,FECHA_INICIO_CASO  = ?,
+                FECHA_CIERRE_CASO  = ?, ESTADO  = ?,DIRECCION_ID = ? 
+                WHERE CASO_ID = ?";
+        $query = $conexion->prepare($sql);
+        $query->bind_param("sissssii", $datos['NumeroCaso'],
+                                      $datos['IdPropietario'],
+                                      $datos['Organizacion'],
+                                      $datos['FechaInicio'],
+                                      $datos['FechaFin'],
+                                      $datos['Estado'],
+                                      $datos['IdDireccion'],
+                                      $datos['IdCaso']);
+        $respuesta = $query->execute();
+        $query->close();
+        
         return $respuesta;
     }
 }

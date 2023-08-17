@@ -20,8 +20,8 @@ function AddDirecciones() {
                 alert(respuesta);
 				if (respuesta == 1) {
                     $("#frmDirecciones")[0].reset();
-					$('#tablaMedidores').load("categorias/tablaMedidores.php");
-					
+				
+					$('#tablaDirecciones').load("categorias/tablaDirecciones.php");
 					swal(":D", "Agregado con exito!", "success");
                   
 				} else {

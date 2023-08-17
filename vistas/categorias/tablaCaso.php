@@ -18,12 +18,13 @@
                 <td>FECHA INICIO</td>
                 <td>FECHA CIERRE</td>
                 <td> ESTADO</td>
+				<td> EDITAR</td>
 			</tr>
 		</thead>
 		<tbody>
 
 		<?php
-			$sql = "SELECT C.NUMERO_CASO,P.NOMBRE1,P.NOMBRE2,P.APELLIDO1,P.APELLIDO2,
+			$sql = "SELECT C.CASO_ID,C.NUMERO_CASO,P.NOMBRE1,P.NOMBRE2,P.APELLIDO1,P.APELLIDO2,
             C.ORGANIZACION,C.FECHA_INICIO_CASO,C.FECHA_CIERRE_CASO,C.ESTADO
              FROM TB_CASO C, TB_PROPIETARIO P
             WHERE C.PROPIETARIO_ID=P.PROPIETARIO_ID ";  
@@ -34,12 +35,18 @@
 		?>
 			<tr style="text-align: center;">
             <td><?php echo $mostrar['NUMERO_CASO']; ?></td>
-				<td><?php echo $mostrar['NOMBRE1']; ?></td>
+				<td><?php echo $mostrar['NOMBRE1'] . " " . $mostrar['NOMBRE2'] . " " . $mostrar['APELLIDO1'] . "" . $mostrar['APELLIDO2']; ?></td>
                 <td><?php echo $mostrar['ORGANIZACION']; ?></td>
 				<td><?php echo $mostrar['FECHA_INICIO_CASO']; ?></td>
                 <td><?php echo $mostrar['FECHA_CIERRE_CASO']; ?></td>
                 <td><?php echo $mostrar['ESTADO']; ?></td>
-				
+				<td>
+					<span class="btn btn-warning btn-sm" 
+						onclick="obtenerDatosCaso('<?php echo $mostrar['CASO_ID'] ?>')"
+						data-toggle="modal" data-target="#modalAgregaCaso">
+						<span class="fas fa-edit"></span>
+					</span>
+				</td>
 			</tr>
 		<?php
 			} 

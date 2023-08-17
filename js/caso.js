@@ -15,7 +15,7 @@ function AddCasos() {
 			
 			success:function(respuesta){
 				respuesta = respuesta.trim();
-                alert(respuesta);
+               // alert(respuesta);
 				if (respuesta == 1) {
                     $("#frmCasos")[0].reset();
 					$('#tablaCasos').load("categorias/tablaCaso.php");
@@ -29,4 +29,32 @@ function AddCasos() {
 			}
 		});
 	}
+}
+
+function RESETFORM(){
+	
+	$("#frmCasos")[0].reset();
+}
+function obtenerDatosCaso(idCaso) {
+	
+	$.ajax({
+		type:"POST",
+		data:{"idCaso":  idCaso},
+		url:"../procesos/categorias/obtenerCaso.php",
+		success:function(respuesta) {
+			//alert(respuesta);
+			respuesta = jQuery.parseJSON(respuesta);
+			
+			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
+			$('#IdPropietario').val(respuesta['PROPIETARIO_ID']);
+			$('#Organizacion').val(respuesta['ORGANIZACION']);
+			$('#FechaInicio').val(respuesta['FECHA_INICIO_CASO']);
+			$('#FechaFin').val(respuesta['FECHA_CIERRE_CASO']);
+			$('#Estado').val(respuesta['ESTADO']);
+			$('#IdDireccion').val(respuesta['DIRECCION_ID']);
+			$('#idcaso').val(respuesta['CASO_ID']);
+			
+			//$('#categoriaU').val(respuesta['nombreCategoria']);
+		}
+	})
 }

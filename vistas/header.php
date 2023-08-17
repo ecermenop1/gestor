@@ -39,8 +39,8 @@ error_reporting(E_ALL);
                         <a class="nav-link" href="registro.php"> <span class="fas fa-user-plus"></span> Rigistra
                             Usuario</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="categorias.php"> <span class="fas fa-file"></span> Categorias</a>
+                   <!-- <li class="nav-item">
+                        <a class="nav-link" href="categorias.php"> <span class="fas fa-file"></span> Categorias</a-->
 
                     </li>
                     <li class="nav-item dropdown">
@@ -66,9 +66,7 @@ error_reporting(E_ALL);
                     <li class="nav-item">
                         <a class="nav-link" href="gestor.php"> <span class="far fa-folder"></span> Archivos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ocr.php"> <span class="far fa-file-pdf"></span> OCR</a>
-                    </li>
+                  
 
                     <li class="nav-item">
                         <a class="nav-link" href="../procesos/usuario/salir.php" style="color: red">
