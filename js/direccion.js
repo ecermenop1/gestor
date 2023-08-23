@@ -2,10 +2,10 @@ function AddDirecciones() {
 
    
 	
-	if ($('#Calle').val()==""||$('#Avenida').val()==""||$('#NumeroCasa').val()==""
+	if ($('#NumeroCaso').val()==""||$('#Calle').val()==""||$('#Avenida').val()==""||$('#NumeroCasa').val()==""
     ||$('#IdMunicipio').val()==""||$('#IdLugarPoblado').val()==""
-    ||$('#IdMunicipio').val()==""||$('#IdDepartamento').val()==""
-    ||$('#IdPais').val()==""||$('#IdDepartamento').val()=="") {
+    ||$('#IdDepartamento').val()==""
+    ||$('#IdPais').val()=="") {
 		swal("Llenar Todos los campos que son obligatorios");
 		return false;
 	} else {
@@ -32,3 +32,32 @@ function AddDirecciones() {
 		});
 	}
 }
+
+
+function obtenerDatosDireccion($id) {
+
+	$.ajax({
+		type: "POST",
+		data: { "idDireccion": $id },
+		url: "../procesos/categorias/obtenerDireccion.php",
+		success: function (respuesta) {
+			//alert(respuesta)
+			respuesta = jQuery.parseJSON(respuesta);
+			$('#IdDireccion').val(respuesta['DIRECCION_ID']);
+			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
+			$('#Calle').val(respuesta['CALLE']);
+			$('#Avenida').val(respuesta['AVENIDA']);
+			$('#NumeroCasa').val(respuesta['NUMERO_CASA']);
+			$('#Zona').val(respuesta['ZONA']);
+			$('#IdMunicipio').val(respuesta['MUNICIPIO_ID']);
+			$('#IdDepartamento').val(respuesta['DEPARTAMENTO_ID']);
+			$('#IdPais').val(respuesta['PAIS_ID']);
+			$('#IdLugarPoblado').val(respuesta['LUGARPOBLADO_ID']);
+			$('#Latitud').val(respuesta['LATITUD']);
+			$('#Longitud').val(respuesta['LONGITUD']);
+			$('#IdMedidor').val(respuesta['MEDIDOR_ID']);
+			$('#Observaciones').val(respuesta['OBSERVACIONES']);
+			//$('#categoriaU').val(respuesta['nombreCategoria']);
+		}
+	})
+ }

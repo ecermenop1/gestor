@@ -9,19 +9,17 @@ class Casos extends Conectar
         $conexion = Conectar::conexion();
 
         $sql = "INSERT INTO TB_CASO (NUMERO_CASO, 
-                                            PROPIETARIO_ID,
                                             ORGANIZACION,
                                             FECHA_INICIO_CASO,
                                             FECHA_CIERRE_CASO,
                                             ESTADO, 
                                             DIRECCION_ID
                                           ) 
-							VALUES (?,?,?,?,?,?,?)";
+							VALUES (?,?,?,?,?,?)";
         $query = $conexion->prepare($sql);
         $query->bind_param(
-            "sissssi",
+            "sssssi",
             $datos['NumeroCaso'],
-            $datos['IdPropietario'],
             $datos['Organizacion'],
             $datos['FechaInicio'],
             $datos['FechaFin'],
@@ -51,12 +49,11 @@ class Casos extends Conectar
         $conexion = Conectar::conexion();
 
         $sql = "UPDATE TB_CASO
-                SET NUMERO_CASO = ?,PROPIETARIO_ID  = ?,ORGANIZACION = ?,FECHA_INICIO_CASO  = ?,
+                SET NUMERO_CASO = ?,ORGANIZACION = ?,FECHA_INICIO_CASO  = ?,
                 FECHA_CIERRE_CASO  = ?, ESTADO  = ?,DIRECCION_ID = ? 
                 WHERE CASO_ID = ?";
         $query = $conexion->prepare($sql);
-        $query->bind_param("sissssii", $datos['NumeroCaso'],
-                                      $datos['IdPropietario'],
+        $query->bind_param("sssssii", $datos['NumeroCaso'],
                                       $datos['Organizacion'],
                                       $datos['FechaInicio'],
                                       $datos['FechaFin'],

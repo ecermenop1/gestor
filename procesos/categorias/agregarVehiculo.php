@@ -25,16 +25,23 @@ $imagenError = $_FILES["imagen"]["error"];
     move_uploaded_file($imagenTmp, $rutaFinal);
 
 	$datos = array (
+            "IdVehiculo" => $_POST['IdVehiculo'],
+            "NumeroCaso" => $_POST['NumeroCaso'],
 			"Placa" => $_POST['Placa'],
 			"TipoVehiculo" => $_POST['TipoVehiculo'],
             "MarcaVehiculo" => $_POST['MarcaVehiculo'],
             "LineaVehiculo" => $_POST['LineaVehiculo'],
             "Modelo" => $_POST['Modelo'],
             "ColorVehiculo" => $_POST['ColorVehiculo'],
-            "Propietario" => $_POST['Propietario'],
-            "RutaImagen" => $rutaFinalimagen
+            "RutaImagen" => $rutaFinalimagen,
+            "imagenNombre" => $imagenNombre
 
 					);
 
 		//print_r($datos);	
-				echo $Vehiculos->agregarVehiculos($datos);
+        if($_POST['IdVehiculo']==""){
+            echo $Vehiculos->agregarVehiculos($datos);
+        }else{
+            echo $Vehiculos->ActualizarVehiculo($datos);
+        }
+				

@@ -12,13 +12,13 @@ if (isset($_SESSION['usuario'])) {
 ?>
 
 
-<div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Vehiculos</h1>
 
             <div class="row">
                 <div class="col-sm-4">
-                    <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaVehiculo">
+                    <span class="btn btn-warning" data-toggle="modal" onclick=" RESETFORM()" data-target="#modalAgregaVehiculo">
                         <span class="fas fa-plus-circle"></span> Nuevo Vehiculo
                     </span>
                 </div>
@@ -33,23 +33,23 @@ if (isset($_SESSION['usuario'])) {
     </div>
 
     <div class="modal fade" id="visualizarArchivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Vehiculos</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        	<div id="imagenobtenida" > </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Vehiculos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="imagenobtenida"> </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 
     <!-- Modal -->
@@ -65,6 +65,26 @@ if (isset($_SESSION['usuario'])) {
                 <div class="modal-body">
                     <form id="frmVehiculo" enctype="multipart/form-data">
                         <div class="form-row">
+
+                            <div class="col-md-3">
+
+
+                                <input type="hidden" class="form-control" id="IdVehiculo" name="IdVehiculo" placeholder="Obligatorio  " required>
+                                <div class="form-group" id="files" style="width: 200px;
+                        height: 400px,400px;
+                            background-color: #f0f0f0; 
+                            border-radius: 20px 20px 20px 20px; 
+                            overflow: hidden;">
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="nombre1">Numero Caso:</label>
+                                    <input type="number" class="form-control" id="NumeroCaso" name="NumeroCaso" placeholder="Obligatorio  " required>
+                                </div>
+                            </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -108,26 +128,8 @@ if (isset($_SESSION['usuario'])) {
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <label for="input1">Propietario:</label>
-                                    <select id="Propietario" name="Propietario" class="form-control" id="specificSizeSelect">
-                                        <option selected value="">Seleccionar Vehiculo</option>
-                                        <?php
-                                        $sql = "SELECT PROPIETARIO_ID,NOMBRE1,NOMBRE2,APELLIDO1,APELLIDO2 FROM TB_PROPIETARIO";
-                                        $result = mysqli_query($conexion, $sql);
-                                        while ($mostrar = mysqli_fetch_array($result)) {
-                                        ?>
-                                            <option value=<?php echo $mostrar['PROPIETARIO_ID']; ?>><?php echo $mostrar['NOMBRE1'] . " " . $mostrar['NOMBRE2'] . " " . $mostrar['APELLIDO1'] . "" . $mostrar['APELLIDO2']; ?></option>
-                                        <?php
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
                                     <label for="input1"> Foto Vehiculo:</label>
-                                    <input type="file" name="imagen"  multiple="multiple" class="form-control" id="Alias" placeholder="Opcional">
+                                    <input type="file" name="imagen" multiple="multiple" class="form-control" id="Alias" placeholder="Opcional">
                                 </div>
                             </div>
 
@@ -166,6 +168,15 @@ if (isset($_SESSION['usuario'])) {
             	actualizaCategoria();
             });*/
         });
+
+
+        function RESETFORM() {
+
+            $("#frmVehiculo")[0].reset();
+
+            var imagenHTML = "<img  src='../fotosPersonas/defaultpersona.png' width='80%'>";
+            $('#files').html(imagenHTML);
+        }
     </script>
 <?php
 } else {

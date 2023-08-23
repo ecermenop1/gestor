@@ -1,7 +1,7 @@
 function AddVehiculo() {
 
 	
-	if ($('#Placa').val() == "" || $('#TipoVehiculo').val() == "" ||
+	if ($('#NumeroCaso').val()== ""  ||$('#Placa').val() == "" || $('#TipoVehiculo').val() == "" ||
 		$('#MarcaVehiculo').val() == "" || $('#LineaVehiculo').val() == "" ||
 		$('#Modelo').val() == "" || $('#ColorVehiculo').val() == "" ) {
 		swal("Todos los campos son obligatorios");
@@ -29,10 +29,42 @@ function AddVehiculo() {
 					swal(":D", "Agregado con exito!", "success");
 
 				} else {
-					swal(":(", "Fallo al agregarr", "error");
+					swal(":(", "Fallo al agregar", "error");
 
 				}
 			}
 		});
 	}
+
+	
+
+		var imagenHTML = "<img  src='../fotosPersonas/defaultpersona.png' width='80%'>";
+		$('#files').html(imagenHTML);
+	
+}
+
+
+function obtenerDatosVehiculos($id) {
+	
+	$.ajax({
+		type: "POST",
+		data: { "idVehiculo": $id },
+		url: "../procesos/categorias/obtenerVehiculo.php",
+		success: function (respuesta) {
+			respuesta = jQuery.parseJSON(respuesta);
+			var imagenHTML = "<img  src='"+respuesta['FOTO_VEHICULO']+"' width='80%'>";
+			$('#files').html(imagenHTML);
+			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
+			$('#IdVehiculo').val(respuesta['ID_VEHICULO']);
+			$('#Placa').val(respuesta['PLACA']);
+			$('#TipoVehiculo').val(respuesta['TIPO_VEHICULO']);
+			$('#MarcaVehiculo').val(respuesta['MARCA_VEHICULO']);
+			$('#LineaVehiculo').val(respuesta['LINEA_VEHICULO']);
+			$('#Modelo').val(respuesta['MODELO_VEHICULO']);
+			$('#ColorVehiculo').val(respuesta['COLOR_VEHICULO']);
+			$('#imagen').val(respuesta['FOTO_VEHICULO']);
+			
+			//$('#categoriaU').val(respuesta['nombreCategoria']);
+		}
+	})
 }

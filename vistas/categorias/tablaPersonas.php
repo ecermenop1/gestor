@@ -11,6 +11,7 @@ $conexion = $conexion->conexion();
 	<table class="table table-hover table-dark" id="tablaCategoriasDataTable">
 		<thead>
 			<tr style="text-align: center;">
+				<td>NUMERO CASO </td>
 				<td>NOMBRE1 </td>
 				<td>NOMBRE2</td>
 				<td>NOMBRE3</td>
@@ -30,7 +31,9 @@ $conexion = $conexion->conexion();
 				<td>ALIAS</td>
 				<th>Descargar</th>
 				<th>Visualizar</th>
-				
+				<th>Ver</th>
+
+
 			</tr>
 		</thead>
 		<tbody>
@@ -43,6 +46,7 @@ $conexion = $conexion->conexion();
 				//$paisid = $mostrar['PAIS_ID'];
 			?>
 				<tr style="text-align: center;">
+					<td><?php echo $mostrar['NUMERO_CASO']; ?></td>
 					<td><?php echo $mostrar['NOMBRE1']; ?></td>
 					<td><?php echo $mostrar['NOMBRE2']; ?></td>
 					<td><?php echo $mostrar['NOMBRE3']; ?></td>
@@ -70,6 +74,12 @@ $conexion = $conexion->conexion();
 							<span class="fas fa-eye"></span>
 					</td>
 
+					<td>
+						<span class="btn btn-warning btn-sm" onclick="obtenerDatosPersona('<?php echo $mostrar['PROPIETARIO_ID'] ?>')" data-toggle="modal" data-target="#modalAgregaPersona">
+							<span class="fas fa-edit"></span>
+						</span>
+					</td>
+
 				</tr>
 			<?php
 			}
@@ -88,7 +98,12 @@ $conexion = $conexion->conexion();
 
 
 
+
+
+
 	$(document).ready(function() {
 		$('#tablaCategoriasDataTable').DataTable();
+
+
 	});
 </script>

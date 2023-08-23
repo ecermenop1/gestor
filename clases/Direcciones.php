@@ -8,7 +8,8 @@ class Direcciones extends Conectar
 
         $conexion = Conectar::conexion();
 
-        $sql = "INSERT INTO TB_DIRECCIONES (CALLE, 
+        $sql = "INSERT INTO TB_DIRECCIONES (NUMERO_CASO,
+                                            CALLE, 
                                             AVENIDA,
                                             NUMERO_CASA,
                                             LUGARPOBLADO_ID,
@@ -23,10 +24,11 @@ class Direcciones extends Conectar
                                             USUARIO
 
                                           ) 
-							VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+							VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $query = $conexion->prepare($sql);
         $query->bind_param(
-            "sssisiiisssis",
+            "ssssisiiisssis",
+            $datos['NumeroCaso'],
             $datos['Calle'],
             $datos['Avenida'],
             $datos['NumeroCasa'],
@@ -48,5 +50,64 @@ class Direcciones extends Conectar
         $query->close();
 
         return $respuesta;
+    }
+
+    
+    public function ActualizarDireccion($datos) {
+        $conexion = Conectar::conexion();
+
+        $sql = "UPDATE TB_DIRECCIONES
+                SET    
+                                          NUMERO_CASO=?,
+                                            CALLE =?, 
+                                            AVENIDA =?,
+                                            NUMERO_CASA =?,
+                                            LUGARPOBLADO_ID =?,
+                                            ZONA =?,
+                                            MUNICIPIO_ID =?,
+                                            DEPARTAMENTO_ID =?,
+                                            PAIS_ID =?,
+                                            LATITUD =?,
+                                            LONGITUD =?,
+                                            OBSERVACIONES =?,
+                                            MEDIDOR_ID =?,
+                                            USUARIO =?
+                                            WHERE DIRECCION_ID =?";
+                                           $query = $conexion->prepare($sql);
+                                            $query->bind_param("ssssisiiisssisi", 
+                                            $datos['NumeroCaso'],
+                                            $datos['Calle'],
+                                            $datos['Avenida'],
+                                            $datos['NumeroCasa'],
+                                            $datos['IdLugarPoblado'],
+                                            $datos['Zona'],
+                                            $datos['IdMunicipio'],
+                                            $datos['IdDepartamento'],
+                                            $datos['IdPais'],
+                                            $datos['Latitud'],
+                                            $datos['Longitud'],
+                                            $datos['Observaciones'],
+                                            $datos['IdMedidor'],
+                                            $datos['idUsuario'],
+                                            $datos['IdDireccion']
+                                            );
+        $respuesta = $query->execute();
+        $query->close();
+        
+        return $respuesta;
+    }
+
+
+    public function obtenerDireccion($IDDIRECCION) {
+        $conexion = Conectar::conexion();
+
+        $sql = "SELECT *
+                FROM TB_DIRECCIONES
+                WHERE DIRECCION_ID ='$IDDIRECCION'";
+        $result = mysqli_query($conexion, $sql);
+
+        $DIRECCION = mysqli_fetch_array($result);
+
+        return $DIRECCION;
     }
 }

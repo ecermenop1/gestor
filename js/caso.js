@@ -15,15 +15,14 @@ function AddCasos() {
 			
 			success:function(respuesta){
 				respuesta = respuesta.trim();
-               // alert(respuesta);
 				if (respuesta == 1) {
-                    $("#frmCasos")[0].reset();
+                   $("#frmCasos")[0].reset();
 					$('#tablaCasos').load("categorias/tablaCaso.php");
 					
 					swal(":D", "Agregado con exito!", "success");
                   
 				} else {
-					swal(":(", "Fallo al agregarr", "error");
+					swal(":(", "Fallo al agregar", "error");
 				
 				}
 			}
@@ -46,7 +45,7 @@ function obtenerDatosCaso(idCaso) {
 			respuesta = jQuery.parseJSON(respuesta);
 			
 			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
-			$('#IdPropietario').val(respuesta['PROPIETARIO_ID']);
+
 			$('#Organizacion').val(respuesta['ORGANIZACION']);
 			$('#FechaInicio').val(respuesta['FECHA_INICIO_CASO']);
 			$('#FechaFin').val(respuesta['FECHA_CIERRE_CASO']);

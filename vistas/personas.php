@@ -17,7 +17,7 @@ if (isset($_SESSION['usuario'])) {
 
             <div class="row">
                 <div class="col-sm-4">
-                    <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaPersona">
+                    <span class="btn btn-warning" data-toggle="modal" onclick="RESETFORM()" data-target="#modalAgregaPersona">
                         <span class="fas fa-plus-circle"></span> Nueva Personas
                     </span>
                 </div>
@@ -32,38 +32,57 @@ if (isset($_SESSION['usuario'])) {
     </div>
 
     <div class="modal fade" id="visualizarArchivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Propietario</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        	<div id="imagenobtenida" > </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Propietario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="imagenobtenida"> </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
     <!-- Modal -->
     <div class="modal fade" id="modalAgregaPersona" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog " role="document" style="max-width: 70%;">
-            <div class="modal-content" >
+            <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Nueva Persona</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form id="frmPersona"  enctype="multipart/form-data">
-                        <div class="form-row">
 
+                <div class="modal-body">
+                    <form id="frmPersona" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="col-md-3">
+
+
+                                <input type="hidden" class="form-control" id="IdPropietario" name="IdPropietario" placeholder="Obligatorio  " required>
+                                <div class="form-group" id="files" style="width: 200px;
+                                                        height: 400px,400px;
+                                                            background-color: #f0f0f0; 
+                                                            border-radius: 20px 20px 20px 20px; 
+                                                            overflow: hidden;">
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="nombre1">Número caso:</label>
+                                    <input type="number" class="form-control" id="NumeroCaso" name="NumeroCaso" placeholder="Obligatorio  " required>
+                                </div>
+                            </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="nombre1">Primer Nombre:</label>
@@ -191,12 +210,12 @@ if (isset($_SESSION['usuario'])) {
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="input1"> Fotografia:</label>
-                                    <input type="file" name="imagen"  multiple="multiple" class="form-control" id="Alias" placeholder="Opcional">
+                                    <input type="file" name="imagen" multiple="multiple" class="form-control" id="imagen" placeholder="Opcional">
                                 </div>
+
                             </div>
-
-
                         </div>
+
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -210,8 +229,6 @@ if (isset($_SESSION['usuario'])) {
 
 
 
-
-
     <?php
     include "footer.php";
     ?>
@@ -220,6 +237,9 @@ if (isset($_SESSION['usuario'])) {
 
     <script type="text/javascript">
         $(document).ready(function() {
+
+
+
             $('#tablaPersonas').load("categorias/tablaPersonas.php");
 
             $('#btnGuardarPersona').click(function() {
@@ -231,6 +251,15 @@ if (isset($_SESSION['usuario'])) {
             	actualizaCategoria();
             });*/
         });
+
+
+        function RESETFORM() {
+
+            $("#frmPersona")[0].reset();
+
+            var imagenHTML = "<img  src='../fotosPersonas/defaultpersona.png' width='80%'>";
+            $('#files').html(imagenHTML);
+        }
     </script>
 <?php
 } else {

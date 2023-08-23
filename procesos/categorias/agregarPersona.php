@@ -25,6 +25,9 @@ $imagenError = $_FILES["imagen"]["error"];
     move_uploaded_file($imagenTmp, $rutaFinal);
 
 	$datos = array (
+        
+            "IdPropietario" => $_POST['IdPropietario'],
+            "NumeroCaso" => $_POST['NumeroCaso'],
 			"Nombre1" => $_POST['Nombre1'],
 			"Nombre2" => $_POST['Nombre2'],
             "Nombre3" => $_POST['Nombre3'],
@@ -47,4 +50,8 @@ $imagenError = $_FILES["imagen"]["error"];
 					);
 
 		//print_r($datos);	
+                if($_POST['IdPropietario']==""){
 				echo $Personas->agregarPersonas($datos);
+                }else{
+                    echo $Personas->ActualizarPersona($datos);
+                }

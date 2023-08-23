@@ -6,6 +6,8 @@
 	$Direcciones = new Direcciones();
     $idUsuario = $_SESSION['idUsuario'];
 	$datos = array (
+            "IdDireccion" => $_POST['IdDireccion'],
+            "NumeroCaso" => $_POST['NumeroCaso'],
 			"Calle" => $_POST['Calle'],
             "Avenida" => $_POST['Avenida'],
             "NumeroCasa" => $_POST['NumeroCasa'],
@@ -24,5 +26,12 @@
 
 					);
 
-				
-				echo $Direcciones->agregarDirecciones($datos);
+				if( $_POST['IdDireccion']==""){
+                   echo $Direcciones->agregarDirecciones($datos);
+
+                }else{
+                    //print_r($datos);
+                    echo $Direcciones->ActualizarDireccion($datos);
+ 
+                }
+			

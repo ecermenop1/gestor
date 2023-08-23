@@ -9,8 +9,8 @@ if (isset($_SESSION['usuario'])) {
 		<div class="row">
 			<div class="col-sm-12" style="text-align: center;">
 				<div class="jumbotron">
-					<h1 class="display-4">Sistema Control de paradas de vehiculos </h1>
-					<p class="lead">Velando siempre por el bienestar de la población</p>
+					<h1 class="display-4">Sistema Unificado de Información de Investigación. </h1>
+					<p class="lead">Una Guatemala sin Drogas es Tarea de Todos.</p>
 					<hr class="my-4">
 					<p><img src="../img/Logo PNC.png" class="img-thumbnail" width="300px" /></p>
 					<p class="lead">

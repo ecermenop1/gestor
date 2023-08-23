@@ -13,7 +13,6 @@
 		<thead>
 			<tr style="text-align: center;">
 				<td>NUMERO CASO</td>
-				<td>PROPIETARIO</td>
 				<td>ORGANIZACION</td>
                 <td>FECHA INICIO</td>
                 <td>FECHA CIERRE</td>
@@ -24,10 +23,9 @@
 		<tbody>
 
 		<?php
-			$sql = "SELECT C.CASO_ID,C.NUMERO_CASO,P.NOMBRE1,P.NOMBRE2,P.APELLIDO1,P.APELLIDO2,
-            C.ORGANIZACION,C.FECHA_INICIO_CASO,C.FECHA_CIERRE_CASO,C.ESTADO
-             FROM TB_CASO C, TB_PROPIETARIO P
-            WHERE C.PROPIETARIO_ID=P.PROPIETARIO_ID ";  
+			$sql = "SELECT CASO_ID,NUMERO_CASO,
+            ORGANIZACION,FECHA_INICIO_CASO,FECHA_CIERRE_CASO,ESTADO
+             FROM TB_CASO  ";  
 			$result = mysqli_query($conexion, $sql);
 
 			while($mostrar = mysqli_fetch_array($result)){ 
@@ -35,7 +33,6 @@
 		?>
 			<tr style="text-align: center;">
             <td><?php echo $mostrar['NUMERO_CASO']; ?></td>
-				<td><?php echo $mostrar['NOMBRE1'] . " " . $mostrar['NOMBRE2'] . " " . $mostrar['APELLIDO1'] . "" . $mostrar['APELLIDO2']; ?></td>
                 <td><?php echo $mostrar['ORGANIZACION']; ?></td>
 				<td><?php echo $mostrar['FECHA_INICIO_CASO']; ?></td>
                 <td><?php echo $mostrar['FECHA_CIERRE_CASO']; ?></td>
