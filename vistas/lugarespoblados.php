@@ -17,7 +17,7 @@ if (isset($_SESSION['usuario'])) {
 
             <div class="row">
                 <div class="col-sm-4">
-                    <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaMuncipio">
+                    <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaLugarPoblado">
                         <span class="fas fa-plus-circle"></span> Nuevo Lugar Poblado
                     </span>
                 </div>
@@ -34,7 +34,7 @@ if (isset($_SESSION['usuario'])) {
 
 
     <!-- Modal -->
-    <div class="modal fade" id="modalAgregaMuncipio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalAgregaLugarPoblado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -45,6 +45,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="modal-body">
                     <form id="frmLugarPoblado">
+                    <input type="hidden" name="IdLugPob" id="IdLugPob" class="form-control">
                         <label>Nombre </label>
                         <input type="text" name="NombreLugarPoblado" id="NombreLugarPoblado" class="form-control">
                         <label>Tipo Lugar Poblado</label>

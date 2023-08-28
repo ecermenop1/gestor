@@ -22,4 +22,40 @@ class Municipios extends Conectar
 
         return $respuesta;
     }
+
+    public function ActualizarMunicipio($datos) {
+        $conexion = Conectar::conexion();
+
+        $sql = "UPDATE TB_MUNICIPIO
+                SET    
+                                            CODIGOMUNICIPIO=?,
+                                            MUNICIPIO_NOMBRE =?, 
+                                            DEPARTAMENTO_ID =?
+                                            WHERE MUNICIPIO_ID =?";
+                                           $query = $conexion->prepare($sql);
+                                            $query->bind_param("ssii", 
+                                            $datos['CodigoMunicipio'],
+                                            $datos['NombreMunicipio'],
+                                            $datos['Departamento'],
+                                            $datos['IdMunicipio']
+                                        
+                                            );
+        $respuesta = $query->execute();
+        $query->close();
+        
+        return $respuesta;
+    }
+
+    public function obtenerMunicipio($idMunicipio) {
+        $conexion = Conectar::conexion();
+
+        $sql = "SELECT *
+                FROM TB_MUNICIPIO
+                WHERE MUNICIPIO_ID ='$idMunicipio'";
+        $result = mysqli_query($conexion, $sql);
+
+        $DIRECCION = mysqli_fetch_array($result);
+
+        return $DIRECCION;
+    }
 }

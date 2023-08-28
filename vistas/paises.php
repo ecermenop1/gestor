@@ -12,7 +12,7 @@ if (isset($_SESSION['usuario'])) {
 
         <div class="row">
             <div class="col-sm-4">
-                <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaCategoria">
+                <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaPais">
                     <span class="fas fa-plus-circle"></span> Agregar Nuevo Pais
                 </span>
             </div>
@@ -29,7 +29,7 @@ if (isset($_SESSION['usuario'])) {
 
 
 <!-- Modal -->
-<div class="modal fade" id="modalAgregaCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="modalAgregaPais" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -41,6 +41,7 @@ if (isset($_SESSION['usuario'])) {
             </div>
             <div class="modal-body">
                 <form id="frmPaises">
+                <input type="text" name="IdPais" id="IdPais" class="form-control">
                     <label>Código País</label>
                     <input type="text" name="CodigoPais" id="CodigoPais" class="form-control">
                     <label>Nombre País</label>

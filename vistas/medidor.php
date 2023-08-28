@@ -17,7 +17,7 @@ if (isset($_SESSION['usuario'])) {
 
             <div class="row">
                 <div class="col-sm-4">
-                    <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaMuncipio">
+                    <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaMedidor">
                         <span class="fas fa-plus-circle"></span> Nuevo Medidor
                     </span>
                 </div>
@@ -34,7 +34,7 @@ if (isset($_SESSION['usuario'])) {
 
 
     <!-- Modal -->
-    <div class="modal fade" id="modalAgregaMuncipio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalAgregaMedidor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -45,6 +45,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="modal-body">
                     <form id="frmMedidor">
+                        <input type="hidden" name="IdMedidor" id="IdMedidor" class="form-control">
                         <label>NUMERO MEDIDOR</label>
                         <input type="text" name="NumeroMedidor" id="NumeroMedidor" class="form-control">
                         <label>EMPRESA ELECTRICA</label>

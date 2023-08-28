@@ -15,12 +15,17 @@
 				<td>ID DEPARTAMENTO</td>
 				<td>CODIGO_DEPARTAMENTO</td>
 				<td>NOMBRE_DEPARTAMENTO</td>
+				<td>PAIS</td>
+				<td>Editar</td>
 			</tr>
 		</thead>
 		<tbody>
 
 		<?php
-			$sql = "SELECT DEPARTAMENTO_ID, CODIGO_DEPARTAMENTO, DEPARTAMENTO_NOMBRE FROM TB_DEPARTAMENTO";  
+			$sql = "SELECT D.DEPARTAMENTO_ID, D.CODIGO_DEPARTAMENTO, D.DEPARTAMENTO_NOMBRE,
+			P.NOMBRE_PAIS
+			FROM TB_DEPARTAMENTO AS D, TB_PAIS AS P
+			WHERE D.PAIS_ID=P.PAIS_ID";  
 			$result = mysqli_query($conexion, $sql);
 
 			while($mostrar = mysqli_fetch_array($result)){ 
@@ -30,7 +35,12 @@
             <td><?php echo $mostrar['DEPARTAMENTO_ID']; ?></td>
 				<td><?php echo $mostrar['CODIGO_DEPARTAMENTO']; ?></td>
 				<td><?php echo $mostrar['DEPARTAMENTO_NOMBRE']; ?></td>
-				
+				<td><?php echo $mostrar['NOMBRE_PAIS']; ?></td>
+				<td>
+					<span class="btn btn-warning btn-sm" onclick="obtenerDatosDepartamento('<?php echo $mostrar['DEPARTAMENTO_ID'] ?>')" data-toggle="modal" data-target="#modalAgregaDepartamento">
+						<span class="fas fa-edit"></span>
+					</span>
+				</td>
 			</tr>
 		<?php
 			} 

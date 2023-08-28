@@ -7,6 +7,7 @@
 	$LugaresPoblados = new LugaresPoblados();
 
 	$datos = array (
+		    "IdLugPob" => $_POST['IdLugPob'],
 			"NombreLugarPoblado" => $_POST['NombreLugarPoblado'],
 			"TipoLugarPoblado" => $_POST['TipoLugarPoblado'],
             "Ruralidades" => $_POST['Ruralidades'],
@@ -15,4 +16,10 @@
 					);
 
 				
-				echo $LugaresPoblados->agregarLugaresPoblados($datos);
+					if($_POST['IdLugPob']==""){
+						echo $LugaresPoblados->agregarLugaresPoblados($datos);
+
+					}else{
+						echo $LugaresPoblados->actualizaLugaresPoblados($datos);
+					}
+			

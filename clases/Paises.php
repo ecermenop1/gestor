@@ -29,33 +29,31 @@
 			return $respuesta;
 		}
 
-		public function obtenerCategoria($idCategoria) {
+		public function obtenerPais($idPais) {
 			$conexion = Conectar::conexion();
 
-			$sql = "SELECT id_categoria, 
-							nombre 
-					FROM t_categorias 
-					WHERE id_categoria = '$idCategoria'";
+			$sql = "SELECT *
+					FROM TB_PAIS
+					WHERE PAIS_id = '$idPais'";
 			$result = mysqli_query($conexion, $sql);
 
-			$categoria = mysqli_fetch_array($result);
+			$PAIS = mysqli_fetch_array($result);
 
-			$datos = array(
-					"idCategoria" => $categoria['id_categoria'],
-					"nombreCategoria" => $categoria['nombre']
-						);
-			return $datos;
+			
+			return $PAIS;
 		}
 
-		public function actualizarCategoria($datos) {
+		public function ActualizarPais($datos) {
 			$conexion = Conectar::conexion();
 
-			$sql = "UPDATE t_categorias 
-					SET nombre = ? 
-					WHERE id_categoria = ?";
+			$sql = "UPDATE TB_PAIS
+					SET CODIGO_PAIS = ?,
+					NOMBRE_PAIS=?
+					WHERE PAIS_ID = ?";
 			$query = $conexion->prepare($sql);
-			$query->bind_param("si", $datos['categoria'],
-									 $datos['idCategoria']);
+			$query->bind_param("ssi", $datos['CodigoPais'],
+									  $datos['NombrePais'],
+									  $datos['IdPais']);
 			$respuesta = $query->execute();
 			$query->close();
 			

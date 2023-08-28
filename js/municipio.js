@@ -29,3 +29,22 @@ function AddMunicipio() {
 		});
 	}
 }
+
+
+function obtenerDatosMunicipio($id) {
+
+	$.ajax({
+		type: "POST",
+		data: { "idMunicipio": $id },
+		url: "../procesos/categorias/obtenerMunicipio.php",
+		success: function (respuesta) {
+			//alert(respuesta)
+			respuesta = jQuery.parseJSON(respuesta);
+			$('#IdMunicipio').val(respuesta['MUNICIPIO_ID']);
+			$('#CodigoMunicipio').val(respuesta['CODIGOMUNICIPIO']);
+			$('#NombreMunicipio').val(respuesta['MUNICIPIO_NOMBRE']);
+			$('#Departamento').val(respuesta['DEPARTAMENTO_ID']);
+			
+		}
+	})
+ }

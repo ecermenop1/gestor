@@ -31,3 +31,25 @@ function AddLugarPoblado() {
 		});
 	}
 }
+
+
+function obtenerDatosLugarPoblado($id) {
+
+	$.ajax({
+		type: "POST",
+		data: { "idLugarPoblado": $id },
+		url: "../procesos/categorias/obtenerLugarPoblado.php",
+		success: function (respuesta) {
+			//alert(respuesta)
+			respuesta = jQuery.parseJSON(respuesta);
+			$('#IdLugPob').val(respuesta['LUGARPOBLADO_ID']);
+			$('#NombreLugarPoblado').val(respuesta['LUGARPOBLADO_NOMBRE']);
+			$('#TipoLugarPoblado').val(respuesta['TIPO_LUGARPOBLADO']);
+			$('#Ruralidades').val(respuesta['RURALIDADES_LUGARPOBLADO']);
+			$('#ZonaCalle').val(respuesta['LUGARPOBLADO_ZONAYCALLE']);
+			$('#MunicipioLugarPoglado').val(respuesta['MUNICIPIO_ID']);
+			
+			//$('#categoriaU').val(respuesta['nombreCategoria']);
+		}
+	})
+ }

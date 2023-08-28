@@ -17,7 +17,7 @@ if (isset($_SESSION['usuario'])) {
 
             <div class="row">
                 <div class="col-sm-4">
-                    <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaCategoria">
+                    <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregaDepartamento">
                         <span class="fas fa-plus-circle"></span> Agregar Nuevo Dpartamento
                     </span>
                 </div>
@@ -34,23 +34,24 @@ if (isset($_SESSION['usuario'])) {
 
 
     <!-- Modal -->
-    <div class="modal fade" id="modalAgregaCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalAgregaDepartamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar nuevo País</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Departamento</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form id="frmDepartamentos">
+                    <input type="hidden" name="IdDepartamento" id="IdDepartamento" class="form-control">
                         <label>Código Departamento </label>
                         <input type="text" name="CodigoDepartamento" id="CodigoDepartamento" class="form-control">
                         <label>Nombre Departamento</label>
                         <input type="text" name="NombreDepartamento" id="NombreDepartamento" class="form-control">
                         <label>Nombre Departamento</label>
-                        <select id="Departamento" name="Departamento" class="form-control" id="specificSizeSelect">
+                        <select id="Pais" name="Pais" class="form-control" id="specificSizeSelect">
                             <option selected value="">Seleccionar Pais</option>
                             <?php
                             $sql = "SELECT PAIS_ID,NOMBRE_PAIS FROM TB_PAIS";

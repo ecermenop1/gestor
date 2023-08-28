@@ -15,6 +15,7 @@
 				<td>ID </td>
 				<td>NÚMERO MEDIDOR</td>
 				<td>EMPRESA ELÉCTRICA</td>
+				<td>EDITAR<td>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,6 +33,11 @@
             <td><?php echo $mostrar['MEDIDOR_ID']; ?></td>
 				<td><?php echo $mostrar['MEDIDOR_NUMERO']; ?></td>
 				<td><?php echo $mostrar['EMPRESAELECTRICA']; ?></td> 
+				<td>
+						<span class="btn btn-warning btn-sm" onclick="obtenerDatosMedidor('<?php echo $mostrar['MEDIDOR_ID'] ?>')" data-toggle="modal" data-target="#modalAgregaMedidor">
+							<span class="fas fa-edit"></span>
+						</span>
+					</td>
 				
 			</tr>
 		<?php

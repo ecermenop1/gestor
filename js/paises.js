@@ -27,3 +27,21 @@ function AddPaises() {
 		});
 	}
 }
+
+function obtenerDatosPais($id) {
+
+	$.ajax({
+		type: "POST",
+		data: { "idPais": $id },
+		url: "../procesos/categorias/obtenerPais.php",
+		success: function (respuesta) {
+			//alert(respuesta)
+			respuesta = jQuery.parseJSON(respuesta);
+			$('#IdPais').val(respuesta['PAIS_ID']);
+			$('#CodigoPais').val(respuesta['CODIGO_PAIS']);
+			$('#NombrePais').val(respuesta['NOMBRE_PAIS']);
+			
+			
+		}
+	})
+ }

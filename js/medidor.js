@@ -29,3 +29,21 @@ function AddMedidores() {
 		});
 	}
 }
+
+function obtenerDatosMedidor($id) {
+
+	$.ajax({
+		type: "POST",
+		data: { "idMedidor": $id },
+		url: "../procesos/categorias/obtenerMedidor.php",
+		success: function (respuesta) {
+			//alert(respuesta)
+			respuesta = jQuery.parseJSON(respuesta);
+			$('#IdMedidor').val(respuesta['MEDIDOR_ID']);
+			$('#NumeroMedidor').val(respuesta['MEDIDOR_NUMERO']);
+			$('#EmpresaElectrica').val(respuesta['EMPRESAELECTRICA']);
+			
+			//$('#categoriaU').val(respuesta['nombreCategoria']);
+		}
+	})
+ }

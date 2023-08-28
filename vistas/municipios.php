@@ -45,6 +45,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="modal-body">
                     <form id="frmMunicipios">
+                        <input type="hidden" name="IdMunicipio" id="IdMunicipio" class="form-control">
                         <label>Código Municipio </label>
                         <input type="text" name="CodigoMunicipio" id="CodigoMunicipio" class="form-control">
                         <label>Municipio</label>

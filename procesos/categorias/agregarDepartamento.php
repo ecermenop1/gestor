@@ -7,12 +7,19 @@
 	$Departamentos = new Departamentos();
 
 	$datos = array (
+		    "IdDepartamento" => $_POST['IdDepartamento'],
 			"CodigoDepartamento" => $_POST['CodigoDepartamento'],
 			"NombreDepartamento" => $_POST['NombreDepartamento'],
-            "Departamento" => $_POST['Departamento']
+            "Pais" => $_POST['Pais']
 					);
 
+			
+					if($_POST['IdDepartamento']==""){
+						echo $Departamentos->agregarDepartamentos($datos);
+
+					}else{
+						echo $Departamentos->ActualizarDepartamento($datos);
+					}
 				
-				echo $Departamentos->agregarDepartamentos($datos);
 	
  ?>

@@ -11,14 +11,53 @@
 			$query = $conexion->prepare($sql);
 			$query->bind_param("isi", $datos['CodigoDepartamento'], 
 									 $datos['NombreDepartamento'],
-                                     $datos['Departamento']);
+                                     $datos['Pais']);
 			$respuesta = $query->execute();
 			$query->close();
 
 			return $respuesta;
 		}
-      
+		
+		public function ActualizarDepartamento($datos) {
+			$conexion = Conectar::conexion();
+	
+			$sql = "UPDATE TB_DEPARTAMENTO
+					SET    
+												CODIGO_DEPARTAMENTO=?,
+												DEPARTAMENTO_NOMBRE =?, 
+												PAIS_ID =?
+												WHERE DEPARTAMENTO_ID =?";
+											   $query = $conexion->prepare($sql);
+												$query->bind_param("ssii", 
+												$datos['CodigoDepartamento'],
+												$datos['NombreDepartamento'],
+												$datos['Pais'],
+												$datos['IdDepartamento'],
+
+											
+												);
+			$respuesta = $query->execute();
+			$query->close();
+			
+			return $respuesta;
+		}
+		public function obtenerDepartamento($idDepartamento) {
+			$conexion = Conectar::conexion();
+	
+			$sql = "SELECT *
+					FROM TB_DEPARTAMENTO
+					WHERE DEPARTAMENTO_ID ='$idDepartamento'";
+			$result = mysqli_query($conexion, $sql);
+	
+			$DIRECCION = mysqli_fetch_array($result);
+	
+			return $DIRECCION;
+		}
 
 	}
+
+	
+
+
 
  ?>
