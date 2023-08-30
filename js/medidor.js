@@ -1,8 +1,9 @@
 function AddMedidores() {
 	var NumeroMedidor = $('#NumeroMedidor').val();
-   
+	var NumeroCaso = $('#NumeroCaso').val();
+	var EmpresaElectrica = $('#EmpresaElectrica').val();
 	
-	if (NumeroMedidor == "") {
+	if (NumeroMedidor == ""||NumeroCaso==""||EmpresaElectrica=="") {
 		swal("Todos los campos son obligatorios");
 		return false;
 	} else {
@@ -37,9 +38,10 @@ function obtenerDatosMedidor($id) {
 		data: { "idMedidor": $id },
 		url: "../procesos/categorias/obtenerMedidor.php",
 		success: function (respuesta) {
-			//alert(respuesta)
+			alert(respuesta)
 			respuesta = jQuery.parseJSON(respuesta);
 			$('#IdMedidor').val(respuesta['MEDIDOR_ID']);
+			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
 			$('#NumeroMedidor').val(respuesta['MEDIDOR_NUMERO']);
 			$('#EmpresaElectrica').val(respuesta['EMPRESAELECTRICA']);
 			

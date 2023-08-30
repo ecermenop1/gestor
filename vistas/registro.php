@@ -17,11 +17,17 @@
 					<label>Nombre personal</label>
 					<input type="text" name="nombre" id="nombre" class="form-control" required="">
 					<label>Fecha de nacimiento</label>
-					<input type="text" name="fechaNacimiento" id="fechaNacimiento" class="form-control" required="" readonly="">
+					<input type="date" name="fechaNacimiento" id="fechaNacimiento" class="form-control" required="" >
 					<label>Email o correo</label>
 					<input type="email" name="correo" id="correo" class="form-control" required="">
 					<label>Nombre de usuario</label>
 					<input type="text" name="usuario" id="usuario" class="form-control" required="">
+					<label>Rol</label>
+					<select id="RolUsuario" name="RolUsuario" class="form-control" id="specificSizeSelect">
+                            <option selected value="">Seleccionar Pais</option>
+                             <option value="USUARIOESTANDAR">USUARIO ESTANDAR</option>
+							 <option value="ADMINISTRADOR">SUPERUSUARIO</option>
+                        </select>
 					<label>Password o contraseña</label>
 					<input type="password" name="password" id="password" class="form-control" required="">
 					<br>
@@ -29,18 +35,16 @@
 						<div class="col-sm-6 text-left" >
 							<button class="btn btn-primary">Registrar</button>
 						</div>
-						<div class="col-sm-6 text-right">
-							<a href="index.php" class="btn btn-success">Login</a>
-						</div>
+						
 					</div>
 				</form>
 			</div>
 			<div class="col-sm-4"></div>
 		</div>
 	</div>
-	<script src="librerias/jquery-3.4.1.min.js"></script>
-	<script src="librerias/jquery-ui-1.12.1/jquery-ui.js"></script>
-	<script src="librerias/sweetalert.min.js"></script>
+	<script src="../librerias/jquery-3.4.1.min.js"></script>
+	<script src="../librerias/jquery-ui-1.12.1/jquery-ui.js"></script>
+	<script src="../librerias/sweetalert.min.js"></script>
 
 	<script type="text/javascript">
 
@@ -62,11 +66,11 @@
 			$.ajax({
 				method: "POST",
 				data: $('#frmRegistro').serialize(),
-				url: "procesos/usuario/registro/agregarUsuario.php",
+				url: "../procesos/usuario/registro/agregarUsuario.php",
 				success:function(respuesta){
 
 					respuesta = respuesta.trim();
-
+alert(respuesta)
 					if (respuesta == 1) {
 						$("#frmRegistro")[0].reset();
 						swal(":D", "Agregado con exito!", "success");
@@ -81,8 +85,10 @@
 			return false;
 		}
 	</script>
-</body>
-</html>
+
+<?php
+    include "footer.php";
+    ?>
 <?php
 		include "footer.php"; 
 		

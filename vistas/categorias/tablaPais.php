@@ -15,6 +15,7 @@ $conexion = $conexion->conexion();
 				<td>CODIGO_PAIS</td>
 				<td>NOMBRE_PAIS</td>
 				<td>Editar</td>
+				<td>Eliminar</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -35,6 +36,12 @@ $conexion = $conexion->conexion();
 							<span class="fas fa-edit"></span>
 						</span>
 					</td>
+					<td>
+							<span class="btn btn-danger btn-sm" 
+									onclick="eliminarPais('<?php echo $mostrar['PAIS_ID'] ?>')">
+								<span class="fas fa-trash-alt"></span>
+							</span>
+						</td>
 				</tr>
 			<?php
 			}

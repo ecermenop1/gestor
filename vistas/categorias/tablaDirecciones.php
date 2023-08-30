@@ -37,8 +37,11 @@ $conexion = $conexion->conexion();
             ON  LP.MUNICIPIO_ID=M.MUNICIPIO_ID
             INNER JOIN  TB_PAIS AS PAIS
             ON D.PAIS_ID=PAIS.PAIS_ID
-            LEFT JOIN TB_DEPARTAMENTO AS DP
-            ON D.DEPARTAMENTO_ID=DP.DEPARTAMENTO_ID   ";
+            INNER JOIN TB_DEPARTAMENTO AS DP
+            ON D.DEPARTAMENTO_ID=DP.DEPARTAMENTO_ID 
+			INNER JOIN TB_CASO C
+			ON D.NUMERO_CASO=C.NUMERO_CASO 
+			AND C.ESTADO='ACTIVO'";
 			$result = mysqli_query($conexion, $sql);
 
 

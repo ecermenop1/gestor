@@ -25,7 +25,7 @@
 		<?php
 			$sql = "SELECT CASO_ID,NUMERO_CASO,
             ORGANIZACION,FECHA_INICIO_CASO,FECHA_CIERRE_CASO,ESTADO
-             FROM TB_CASO  ";  
+             FROM TB_CASO WHERE ESTADO='ACTIVO' ";  
 			$result = mysqli_query($conexion, $sql);
 
 			while($mostrar = mysqli_fetch_array($result)){ 

@@ -12,7 +12,7 @@
 	<table class="table table-hover table-dark" id="tablaCategoriasDataTable">
 		<thead>
 			<tr style="text-align: center;">
-				<td>ID </td>
+				<td>NUMERO_CASO </td>
 				<td>NÚMERO MEDIDOR</td>
 				<td>EMPRESA ELÉCTRICA</td>
 				<td>EDITAR<td>
@@ -21,16 +21,17 @@
 		<tbody>
 
 		<?php
-			$sql = "SELECT MEDIDOR_ID, 
-                           MEDIDOR_NUMERO , 
-                           EMPRESAELECTRICA FROM TB_MEDIDORELECTRONICO";  
+			$sql = "SELECT ME.NUMERO_CASO, ME.MEDIDOR_ID, 
+                           ME.MEDIDOR_NUMERO , 
+                           ME.EMPRESAELECTRICA FROM TB_MEDIDORELECTRONICO AS ME, TB_CASO AS C
+						   WHERE ME.NUMERO_CASO=C.NUMERO_CASO AND C.ESTADO='ACTIVO'";  
 			$result = mysqli_query($conexion, $sql);
 
 			while($mostrar = mysqli_fetch_array($result)){ 
 				//$paisid = $mostrar['PAIS_ID'];
 		?>
 			<tr style="text-align: center;">
-            <td><?php echo $mostrar['MEDIDOR_ID']; ?></td>
+            <td><?php echo $mostrar['NUMERO_CASO']; ?></td>
 				<td><?php echo $mostrar['MEDIDOR_NUMERO']; ?></td>
 				<td><?php echo $mostrar['EMPRESAELECTRICA']; ?></td> 
 				<td>

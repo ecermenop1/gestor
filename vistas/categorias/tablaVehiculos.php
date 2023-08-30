@@ -27,7 +27,8 @@ $conexion = $conexion->conexion();
 		<tbody>
 
 			<?php
-			$sql = "SELECT * FROM TB_VEHICULO ";
+			$sql = "SELECT V.* FROM TB_VEHICULO AS V,TB_CASO AS C WHERE V.NUMERO_CASO=C.NUMERO_CASO 
+			AND C.ESTADO='ACTIVO'";
 			$result = mysqli_query($conexion, $sql);
 
 			while ($mostrar = mysqli_fetch_array($result)) {

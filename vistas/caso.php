@@ -84,8 +84,8 @@ if (isset($_SESSION['usuario'])) {
                                     <select id="Estado" name="Estado" class="form-control" id="specificSizeSelect">
                                         <option selected value="">Seleccionar Estado</option>
 
-                                        <option value="Activo">Activo</option>
-                                        <option value="Cerrado">Cerrado</option>
+                                        <option value="ACTIVO">Activo</option>
+                                        <option value="CERRADO">Cerrado</option>
 
 
                                     </select>

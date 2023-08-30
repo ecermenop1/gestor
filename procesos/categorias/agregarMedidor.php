@@ -7,6 +7,7 @@
 	$Medidores = new Medidores();
 
 	$datos = array (
+	 		"NumeroCaso" => $_POST['NumeroCaso'],
 			"IdMedidor" => $_POST['IdMedidor'],
 			"NumeroMedidor" => $_POST['NumeroMedidor'],
 			"EmpresaElectrica" => $_POST['EmpresaElectrica'],

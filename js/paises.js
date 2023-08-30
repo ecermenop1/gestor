@@ -45,3 +45,45 @@ function obtenerDatosPais($id) {
 		}
 	})
  }
+
+
+ function eliminarPais(idPais) {
+	//alert(idPais)
+	swal({
+	  title: "Estas seguro de eliminar este Registro?",
+	  text: "Una vez eliminado, no podra recuperarse!",
+	  icon: "warning",
+	  buttons: true,
+	  dangerMode: true,
+	})
+	.then((willDelete) => {
+	  if (willDelete) {
+		alert('si entra');
+	    	$.ajax({
+		
+	    		type:"POST",
+				data: { "idPais": idPais },
+	    		url:"../procesos/categorias/eliminarPais.php",
+	    		success:function(respuesta){
+					alert(respuesta);
+	    			respuesta = respuesta.trim();
+					
+	    			if (respuesta == 1) {
+
+
+						$('#tablaPaises').load("categorias/tablaPais.php");
+	    				swal("Eliminado con exito!", {
+	      					icon: "success",
+	    				});
+	    			} else {
+	    				swal("Error al eliminar!", {
+	      					icon: "error",
+	    				});
+	    			}
+
+	    			
+	    		}
+	    	});
+	  } 
+	});
+}

@@ -14,13 +14,15 @@
 											fechaNacimiento,
 											email,
 											usuario,
+											ROL,
 											password) 
-							VALUES (?, ?, ?, ?, ?)";
+							VALUES (?, ?, ?, ?, ?,?)";
 				$query = $conexion->prepare($sql);
-				$query->bind_param('sssss', $datos['nombre'],
+				$query->bind_param('ssssss', $datos['nombre'],
 											$datos['fechaNacimiento'],
 											$datos['email'],
 											$datos['usuario'],
+											$datos['RolUsuario'],
 											$datos['password']);
 				$exito = $query->execute();
 				$query->close();
@@ -62,14 +64,16 @@
 			if ($respuesta > 0) {
 				$_SESSION['usuario'] = $Email;
 
-				$sql = "SELECT id_usuario 
+				$sql = "SELECT id_usuario, ROL
 						FROM t_usuarios 
 						WHERE email = '$Email' 
 						AND password = '$password'";
 				$result = mysqli_query($conexion ,$sql);
-				$idUsuario = mysqli_fetch_row($result)[0];
+				$datosusuario = mysqli_fetch_array($result);
+		
 
-				$_SESSION['idUsuario'] = $idUsuario;
+				$_SESSION['idUsuario'] = $datosusuario['id_usuario'];
+				$_SESSION['RolUsuario'] = $datosusuario['ROL'];
 
 				return 1;
 			} else {

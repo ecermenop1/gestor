@@ -1,6 +1,4 @@
 function AddPersonas() {
-	alert('prueba piloto');
-
 	if ($('#NumeroCaso').val() == "" || $('#Nombre1').val() == "" || $('#Apellido1').val() == "" ||
 		$('#Apellido2').val() == "" || $('#FechaNacimiento').val() == "" ||
 		$('#LugarNacimiento').val() == "" || $('#TipoDocumento').val() == "" ||

@@ -65,11 +65,11 @@ if (isset($_SESSION['usuario'])) {
                 <div class="modal-body">
                     <form id="frmVehiculo" enctype="multipart/form-data">
                         <div class="form-row">
-
+                        <input type="text" class="form-control" id="IdVehiculo" name="IdVehiculo" placeholder="Obligatorio" >
                             <div class="col-md-3">
 
 
-                                <input type="hidden" class="form-control" id="IdVehiculo" name="IdVehiculo" placeholder="Obligatorio  " required>
+                              
                                 <div class="form-group" id="files" style="width: 200px;
                         height: 400px,400px;
                             background-color: #f0f0f0; 
@@ -101,7 +101,7 @@ if (isset($_SESSION['usuario'])) {
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="input1">Marca Vehiculo:</label>
-                                    <input type="text" class="form-control" id="MarcaVehiculo" name="MarcaVehiculo" placeholder="Opcional">
+                                    <input type="text" class="form-control" id="MarcaVehiculo" name="MarcaVehiculo" placeholder="obligatorio">
                                 </div>
                             </div>
 

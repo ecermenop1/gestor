@@ -2,7 +2,15 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+
+//session_start();
+
+    $RolUsuario=$_SESSION['RolUsuario'];
+   // echo $RolUsuario;
 ?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -35,10 +43,16 @@ error_reporting(E_ALL);
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
+                    <?php
+                    if($RolUsuario=="ADMINISTRADOR"){
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="registro.php"> <span class="fas fa-user-plus"></span> Rigistra
                             Usuario</a>
                     </li>
+                    <?php
+                     }
+                    ?>
                    <!-- <li class="nav-item">
                         <a class="nav-link" href="categorias.php"> <span class="fas fa-file"></span> Categorias</a-->
 

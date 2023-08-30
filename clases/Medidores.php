@@ -8,13 +8,14 @@ class Medidores extends Conectar
 
         $conexion = Conectar::conexion();
 
-        $sql = "INSERT INTO TB_MEDIDORELECTRONICO (MEDIDOR_NUMERO, 
+        $sql = "INSERT INTO TB_MEDIDORELECTRONICO (NUMERO_CASO,MEDIDOR_NUMERO, 
                                           EMPRESAELECTRICA
                                           ) 
-							VALUES (?,?)";
+							VALUES (?,?,?)";
         $query = $conexion->prepare($sql);
         $query->bind_param(
-            "ss",
+            "sss",
+            $datos['NumeroCaso'],
             $datos['NumeroMedidor'],
             $datos['EmpresaElectrica'],
            
@@ -30,12 +31,13 @@ class Medidores extends Conectar
         $conexion = Conectar::conexion();
 
         $sql = "UPDATE TB_MEDIDORELECTRONICO
-                SET    
+                SET                         NUMERO_CASO=?,
                                             MEDIDOR_NUMERO=?,
                                             EMPRESAELECTRICA =?
                                             WHERE MEDIDOR_ID =?";
                                            $query = $conexion->prepare($sql);
-                                            $query->bind_param("ssi", 
+                                            $query->bind_param("sssi", 
+                                            $datos['NumeroCaso'],
                                             $datos['NumeroMedidor'],
                                             $datos['EmpresaElectrica'],
                                             $datos['IdMedidor'],

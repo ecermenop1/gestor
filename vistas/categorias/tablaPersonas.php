@@ -39,7 +39,8 @@ $conexion = $conexion->conexion();
 		<tbody>
 
 			<?php
-			$sql = "SELECT * FROM TB_PROPIETARIO";
+			$sql = "SELECT P.* FROM TB_PROPIETARIO P, TB_CASO C
+			WHERE P.NUMERO_CASO=C.NUMERO_CASO AND C.ESTADO='ACTIVO'";
 			$result = mysqli_query($conexion, $sql);
 
 			while ($mostrar = mysqli_fetch_array($result)) {

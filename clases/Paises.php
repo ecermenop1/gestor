@@ -17,13 +17,13 @@
 			return $respuesta;
 		}
 
-		public function eliminarCategoria($idCategoria) {
+		public function eliminarPais($idPais) {
 			$conexion = Conectar::conexion();
 
-			$sql = "DELETE FROM t_categorias 
-					WHERE id_categoria = ?";
+			$sql = "DELETE FROM TB_PAIS 
+					WHERE PAIS_ID = ?";
 			$query = $conexion->prepare($sql);
-			$query->bind_param('i', $idCategoria);
+			$query->bind_param('i', $idPais);
 			$respuesta = $query->execute();
 			$query->close();
 			return $respuesta;
