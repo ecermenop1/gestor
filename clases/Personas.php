@@ -124,4 +124,17 @@ class Personas extends Conectar
 
         return $PROPIETARIO;
     }
+
+
+    public function eliminarPersona($idPersona) {
+        $conexion = Conectar::conexion();
+
+        $sql = "DELETE FROM TB_PROPIETARIO 
+                WHERE PROPIETARIO_ID = ?";
+        $query = $conexion->prepare($sql);
+        $query->bind_param('i', $idPersona);
+        $respuesta = $query->execute();
+        $query->close();
+        return $respuesta;
+    }
 }

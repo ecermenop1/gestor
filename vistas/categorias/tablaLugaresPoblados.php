@@ -16,6 +16,9 @@ $conexion = $conexion->conexion();
 				<td>TIPO lUGAR POBLADO</td>
 				<td>RURALIDADES</td>
 				<td>LUGARPOBLADO_ZONAYCALLE</td>
+				<td>EDITAR</td>
+				<td>ELIMINAR</td>
+
 
 			</tr>
 		</thead>
@@ -44,7 +47,11 @@ $conexion = $conexion->conexion();
 							<span class="fas fa-edit"></span>
 						</span>
 					</td>
-
+					<td>
+						<span class="btn btn-danger btn-sm" onclick="eliminarLugarPoblado('<?php echo $mostrar['LUGARPOBLADO_ID'] ?>')">
+							<span class="fas fa-trash-alt"></span>
+						</span>
+					</td>
 				</tr>
 			<?php
 			}
@@ -55,6 +62,9 @@ $conexion = $conexion->conexion();
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#tablaCategoriasDataTable').DataTable();
+		$('#tablaCategoriasDataTable').DataTable({
+			scrollY: 'auto',
+			paging: true
+		});
 	});
 </script>

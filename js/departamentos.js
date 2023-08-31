@@ -46,3 +46,45 @@ function obtenerDatosDepartamento($id) {
 		}
 	})
  }
+
+
+ function eliminarDepartameto(idDepartamento) {
+	alert(idDepartamento)
+	swal({
+	  title: "Estas seguro de eliminar este Registro?",
+	  text: "Una vez eliminado, no podra recuperarse!",
+	  icon: "warning",
+	  buttons: true,
+	  dangerMode: true,
+	})
+	.then((willDelete) => {
+	  if (willDelete) {
+	
+	    	$.ajax({
+		
+	    		type:"POST",
+				data: { "idDepartamento": idDepartamento },
+	    		url:"../procesos/categorias/eliminarDepartamento.php",
+	    		success:function(respuesta){
+					//alert(respuesta);
+	    			respuesta = respuesta.trim();
+					
+	    			if (respuesta == 1) {
+
+
+						$('#tablaDepartamentos').load("categorias/tablaDepartamento.php");
+	    				swal("Eliminado con exito!", {
+	      					icon: "success",
+	    				});
+	    			} else {
+	    				swal("Error al eliminar!", {
+	      					icon: "error",
+	    				});
+	    			}
+
+	    			
+	    		}
+	    	});
+	  } 
+	});
+}

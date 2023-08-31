@@ -69,6 +69,19 @@ class LugaresPoblados extends Conectar
     
         return $LugarPoblado;
     }
+
+    public function eliminarLugarPoblado($idLugarPoblado) {
+        $conexion = Conectar::conexion();
+
+        $sql = "DELETE FROM TB_LUGARESPOBLADOS 
+                WHERE LUGARPOBLADO_ID = ?";
+        $query = $conexion->prepare($sql);
+        $query->bind_param('i', $idLugarPoblado);
+        $respuesta = $query->execute();
+        $query->close();
+        return $respuesta;
+    }
+
     
 }
 

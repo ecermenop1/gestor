@@ -11,7 +11,7 @@ $conexion = $conexion->conexion();
 	<table class="table table-hover table-dark" id="tablaCategoriasDataTable">
 		<thead>
 			<tr style="text-align: center;">
-              <td>Número Caso </td>
+				<td>Número Caso </td>
 				<td>Placa </td>
 				<td>Tipo Vehiculo</td>
 				<td>Marca Vehiculo</td>
@@ -21,7 +21,7 @@ $conexion = $conexion->conexion();
 				<th>Descargar</th>
 				<th>Visualizar</th>
 				<th>Editar</th>
-				
+
 			</tr>
 		</thead>
 		<tbody>
@@ -36,14 +36,14 @@ $conexion = $conexion->conexion();
 			?>
 				<tr style="text-align: center;">
 					<td><?php echo $mostrar['NUMERO_CASO']; ?></td>
-                    <td><?php echo $mostrar['PLACA']; ?></td>
+					<td><?php echo $mostrar['PLACA']; ?></td>
 					<td><?php echo $mostrar['TIPO_VEHICULO']; ?></td>
 					<td><?php echo $mostrar['MARCA_VEHICULO']; ?></td>
 					<td><?php echo $mostrar['LINEA_VEHICULO']; ?></td>
 					<td><?php echo $mostrar['MODELO_VEHICULO']; ?></td>
 					<td><?php echo $mostrar['COLOR_VEHICULO']; ?></td>
 					<td>
-						<a href="<?php echo $mostrar['FOTO_VEHICULO'] ?>" download="<?php echo date ('d-m-y h:i:s') ?>" class="btn btn-success btn-sm">
+						<a href="<?php echo $mostrar['FOTO_VEHICULO'] ?>" download="<?php echo date('d-m-y h:i:s') ?>" class="btn btn-success btn-sm">
 							<span class="fas fa-download"></span>
 						</a>
 					</td>
@@ -54,6 +54,12 @@ $conexion = $conexion->conexion();
 					<td>
 						<span class="btn btn-warning btn-sm" onclick="obtenerDatosVehiculos('<?php echo $mostrar['ID_VEHICULO'] ?>')" data-toggle="modal" data-target="#modalAgregaVehiculo">
 							<span class="fas fa-edit"></span>
+						</span>
+					</td>
+
+					<td>
+						<span class="btn btn-danger btn-sm" onclick="eliminarVehiculo('<?php echo $mostrar['ID_VEHICULO'] ?>')">
+							<span class="fas fa-trash-alt"></span>
 						</span>
 					</td>
 
@@ -76,6 +82,9 @@ $conexion = $conexion->conexion();
 
 
 	$(document).ready(function() {
-		$('#tablaCategoriasDataTable').DataTable();
+		$('#tablaCategoriasDataTable').DataTable({
+			scrollY: 'auto',
+			paging: true
+		});
 	});
 </script>

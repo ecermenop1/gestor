@@ -23,6 +23,7 @@ $conexion = $conexion->conexion();
 				<td>LONGITUD</td>
 				<td>OBSERVACIONES</td>
 				<td>EDITAR</td>
+				<td>ELIMINAR</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -66,6 +67,11 @@ $conexion = $conexion->conexion();
 							<span class="fas fa-edit"></span>
 						</span>
 					</td>
+					<td>
+						<span class="btn btn-danger btn-sm" onclick="eliminarDireccion('<?php echo $mostrar['DIRECCION_ID'] ?>')">
+							<span class="fas fa-trash-alt"></span>
+						</span>
+					</td>
 
 				</tr>
 			<?php
@@ -77,6 +83,34 @@ $conexion = $conexion->conexion();
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#tablaCategoriasDataTable').DataTable();
+		$('#tablaCategoriasDataTable').DataTable({
+			scrollY: '100',
+			paging: true
+		});
 	});
+
+
+	var table = $('#tblinventario').DataTable({
+        language: {
+            "decimal": "",
+            "emptyTable": "No hay información",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+            "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Entradas",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        },
+
+    });
 </script>

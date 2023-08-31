@@ -58,4 +58,18 @@ class Municipios extends Conectar
 
         return $DIRECCION;
     }
+
+
+    public function eliminarMunicipio($idPais) {
+        $conexion = Conectar::conexion();
+
+        $sql = "DELETE FROM TB_MUNICIPIO 
+                WHERE MUNICIPIO_ID = ?";
+        $query = $conexion->prepare($sql);
+        $query->bind_param('i', $idPais);
+        $respuesta = $query->execute();
+        $query->close();
+        return $respuesta;
+    }
+
 }

@@ -48,7 +48,6 @@ function obtenerDatosPais($id) {
 
 
  function eliminarPais(idPais) {
-	//alert(idPais)
 	swal({
 	  title: "Estas seguro de eliminar este Registro?",
 	  text: "Una vez eliminado, no podra recuperarse!",
@@ -58,7 +57,6 @@ function obtenerDatosPais($id) {
 	})
 	.then((willDelete) => {
 	  if (willDelete) {
-		alert('si entra');
 	    	$.ajax({
 		
 	    		type:"POST",

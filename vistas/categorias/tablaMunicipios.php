@@ -15,7 +15,8 @@ $conexion = $conexion->conexion();
 				<td>CODIGO_MUNICIPIO</td>
 				<td>MUNICIPIO</td>
 				<td>DEPARTAMENTO</td>
-				<td>Editar</td>
+				<td>EDITAR</td>
+				<td>ELIMINAR</td>
 
 			</tr>
 		</thead>
@@ -41,6 +42,11 @@ $conexion = $conexion->conexion();
 							<span class="fas fa-edit"></span>
 						</span>
 					</td>
+					<td>
+						<span class="btn btn-danger btn-sm" onclick="eliminarMunicipio('<?php echo $mostrar['MUNICIPIO_ID'] ?>')">
+							<span class="fas fa-trash-alt"></span>
+						</span>
+					</td>
 				</tr>
 
 			<?php
@@ -52,6 +58,9 @@ $conexion = $conexion->conexion();
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#tablaCategoriasDataTable').DataTable();
+		$('#tablaCategoriasDataTable').DataTable({
+			scrollY: 'auto',
+			paging: true
+		});
 	});
 </script>

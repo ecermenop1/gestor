@@ -110,4 +110,19 @@ class Direcciones extends Conectar
 
         return $DIRECCION;
     }
+
+
+    public function eliminarDireccion($idDireccion) {
+        $conexion = Conectar::conexion();
+
+        $sql = "DELETE FROM TB_DIRECCIONES 
+                WHERE DIRECCION_ID = ?";
+        $query = $conexion->prepare($sql);
+        $query->bind_param('i', $idDireccion);
+        $respuesta = $query->execute();
+        $query->close();
+        return $respuesta;
+    }
+
 }
+

@@ -29,9 +29,10 @@ $conexion = $conexion->conexion();
 				<td>NOMBRE_MADRE</td>
 				<td>INUMERO_CELULAR </td>
 				<td>ALIAS</td>
-				<th>Descargar</th>
-				<th>Visualizar</th>
-				<th>Ver</th>
+				<th>DESCARGAR</th>
+				<th>VISUALIZAR</th>
+				<th>EDITAR</th>
+				<th>ELIMINAR</th>
 
 
 			</tr>
@@ -81,6 +82,12 @@ $conexion = $conexion->conexion();
 						</span>
 					</td>
 
+					<td>
+						<span class="btn btn-danger btn-sm" onclick="eliminarPersona('<?php echo $mostrar['PROPIETARIO_ID'] ?>')">
+							<span class="fas fa-trash-alt"></span>
+						</span>
+					</td>
+
 				</tr>
 			<?php
 			}
@@ -102,9 +109,13 @@ $conexion = $conexion->conexion();
 
 
 
+
+
 	$(document).ready(function() {
-		$('#tablaCategoriasDataTable').DataTable();
-
-
-	});
+  $('#tablaCategoriasDataTable').DataTable({
+    scrollY: 'auto', 
+    paging: true 
+  });
+});
+	
 </script>

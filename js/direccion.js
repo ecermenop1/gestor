@@ -61,3 +61,44 @@ function obtenerDatosDireccion($id) {
 		}
 	})
  }
+
+
+ function eliminarDireccion(idDireccion) {
+	alert(idDireccion)
+	swal({
+	  title: "Estas seguro de eliminar este Registro?",
+	  text: "Una vez eliminado, no podra recuperarse!",
+	  icon: "warning",
+	  buttons: true,
+	  dangerMode: true,
+	})
+	.then((willDelete) => {
+	  if (willDelete) {
+	
+	    	$.ajax({
+		
+	    		type:"POST",
+				data: { "idDireccion": idDireccion },
+	    		url:"../procesos/categorias/eliminarDireccion.php",
+	    		success:function(respuesta){
+					alert(respuesta);
+	    			respuesta = respuesta.trim();
+					
+	    			if (respuesta == 1) {
+		
+					$('#tablaDirecciones').load("categorias/tablaDirecciones.php");
+	    				swal("Eliminado con exito!", {
+	      					icon: "success",
+	    				});
+	    			} else {
+	    				swal("Error al eliminar!", {
+	      					icon: "error",
+	    				});
+	    			}
+
+	    			
+	    		}
+	    	});
+	  } 
+	});
+}

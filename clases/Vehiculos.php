@@ -79,4 +79,20 @@ class Vehiculos extends Conectar
 
         return $VEHICULO;
     }
+
+
+    
+    public function eliminarVehiculo($idVehiculo) {
+        $conexion = Conectar::conexion();
+
+        $sql = "DELETE FROM TB_VEHICULO 
+                WHERE ID_VEHICULO = ?";
+        $query = $conexion->prepare($sql);
+        $query->bind_param('i', $idVehiculo);
+        $respuesta = $query->execute();
+        $query->close();
+        return $respuesta;
+    }
 }
+
+

@@ -67,7 +67,7 @@ if (isset($_SESSION['usuario'])) {
                             <div class="col-md-3">
 
 
-                                <input type="text" class="form-control" id="IdPropietario" name="IdPropietario" placeholder="Obligatorio" required>
+                                <input type="hidden" class="form-control" id="IdPropietario" name="IdPropietario" placeholder="Obligatorio" required>
                                 <div class="form-group" id="files" style="width: 200px;
                                                         height: 400px,400px;
                                                             background-color: #f0f0f0; 

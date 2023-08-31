@@ -78,3 +78,44 @@ function obtenerDatosPersona($id) {
 		}
 	})
 }
+
+
+function eliminarPersona(idPersona) {
+	alert(idPersona)
+	swal({
+	  title: "Estas seguro de eliminar este Registro?",
+	  text: "Una vez eliminado, no podra recuperarse!",
+	  icon: "warning",
+	  buttons: true,
+	  dangerMode: true,
+	})
+	.then((willDelete) => {
+	  if (willDelete) {
+	
+	    	$.ajax({
+		
+	    		type:"POST",
+				data: { "idPersona": idPersona },
+	    		url:"../procesos/categorias/eliminarPersona.php",
+	    		success:function(respuesta){
+					alert(respuesta);
+	    			respuesta = respuesta.trim();
+					
+	    			if (respuesta == 1) {
+		
+						$('#tablaPersonas').load("categorias/tablaPersonas.php");
+	    				swal("Eliminado con exito!", {
+	      					icon: "success",
+	    				});
+	    			} else {
+	    				swal("Error al eliminar!", {
+	      					icon: "error",
+	    				});
+	    			}
+
+	    			
+	    		}
+	    	});
+	  } 
+	});
+}

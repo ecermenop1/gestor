@@ -61,4 +61,18 @@ class Medidores extends Conectar
 
         return $MEDIDOR;
     }
+
+
+    public function eliminarMedidor($idLugarPoblado) {
+        $conexion = Conectar::conexion();
+
+        $sql = "DELETE FROM TB_MEDIDORELECTRONICO 
+                WHERE MEDIDOR_ID = ?";
+        $query = $conexion->prepare($sql);
+        $query->bind_param('i', $idLugarPoblado);
+        $respuesta = $query->execute();
+        $query->close();
+        return $respuesta;
+    }
+
 }

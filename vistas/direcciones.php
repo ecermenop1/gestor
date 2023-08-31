@@ -47,7 +47,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="modal-body">
                     <form id="frmDirecciones" >
                         <div class="form-row">
-                        <input type="number" class="form-control" id="IdDireccion" name="IdDireccion" placeholder="Obligatorio  " required>
+                        <input type="hidden" class="form-control" id="IdDireccion" name="IdDireccion" placeholder="Obligatorio  " required>
                         <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="nombre1">Número de Caso:</label>

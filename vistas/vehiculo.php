@@ -65,7 +65,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="modal-body">
                     <form id="frmVehiculo" enctype="multipart/form-data">
                         <div class="form-row">
-                        <input type="text" class="form-control" id="IdVehiculo" name="IdVehiculo" placeholder="Obligatorio" >
+                        <input type="hidden" class="form-control" id="IdVehiculo" name="IdVehiculo" placeholder="Obligatorio" >
                             <div class="col-md-3">
 
 

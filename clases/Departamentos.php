@@ -54,6 +54,19 @@
 			return $DIRECCION;
 		}
 
+		public function eliminarDepartamento($idDepartamento) {
+			$conexion = Conectar::conexion();
+
+			$sql = "DELETE FROM TB_DEPARTAMENTO 
+					WHERE DEPARTAMENTO_ID = ?";
+			$query = $conexion->prepare($sql);
+			$query->bind_param('i', $idDepartamento);
+			$respuesta = $query->execute();
+			$query->close();
+			return $respuesta;
+		}
+	
+
 	}
 
 	

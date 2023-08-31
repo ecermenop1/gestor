@@ -65,4 +65,17 @@ class Casos extends Conectar
         
         return $respuesta;
     }
+
+
+    public function eliminarCaso($idCaso) {
+        $conexion = Conectar::conexion();
+
+        $sql = "DELETE FROM TB_CASO 
+                WHERE CASO_ID = ?";
+        $query = $conexion->prepare($sql);
+        $query->bind_param('i', $idCaso);
+        $respuesta = $query->execute();
+        $query->close();
+        return $respuesta;
+    }
 }

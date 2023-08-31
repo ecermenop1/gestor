@@ -53,3 +53,43 @@ function obtenerDatosLugarPoblado($id) {
 		}
 	})
  }
+
+ function eliminarLugarPoblado(idLugarPoblado) {
+	//alert(idLugarPoblado)
+	swal({
+	  title: "Estas seguro de eliminar este Registro?",
+	  text: "Una vez eliminado, no podra recuperarse!",
+	  icon: "warning",
+	  buttons: true,
+	  dangerMode: true,
+	})
+	.then((willDelete) => {
+	  if (willDelete) {
+	
+	    	$.ajax({
+		
+	    		type:"POST",
+				data: { "idLugarPoblado": idLugarPoblado },
+	    		url:"../procesos/categorias/eliminarLugarPoblado.php",
+	    		success:function(respuesta){
+	    			respuesta = respuesta.trim();
+					
+	    			if (respuesta == 1) {
+
+
+						$('#tablaLugaresPoblados').load("categorias/tablaLugaresPoblados.php");
+	    				swal("Eliminado con exito!", {
+	      					icon: "success",
+	    				});
+	    			} else {
+	    				swal("Error al eliminar!", {
+	      					icon: "error",
+	    				});
+	    			}
+
+	    			
+	    		}
+	    	});
+	  } 
+	});
+}

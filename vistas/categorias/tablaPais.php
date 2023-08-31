@@ -37,11 +37,10 @@ $conexion = $conexion->conexion();
 						</span>
 					</td>
 					<td>
-							<span class="btn btn-danger btn-sm" 
-									onclick="eliminarPais('<?php echo $mostrar['PAIS_ID'] ?>')">
-								<span class="fas fa-trash-alt"></span>
-							</span>
-						</td>
+						<span class="btn btn-danger btn-sm" onclick="eliminarPais('<?php echo $mostrar['PAIS_ID'] ?>')">
+							<span class="fas fa-trash-alt"></span>
+						</span>
+					</td>
 				</tr>
 			<?php
 			}
@@ -52,6 +51,9 @@ $conexion = $conexion->conexion();
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#tablaCategoriasDataTable').DataTable();
+		$('#tablaCategoriasDataTable').DataTable({
+			scrollY: 'auto',
+			paging: true
+		});
 	});
 </script>

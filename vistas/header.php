@@ -21,6 +21,7 @@ error_reporting(E_ALL);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="../librerias/fontawesome/css/all.css">
     <link rel="stylesheet" type="text/css" href="../librerias/datatable/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../librerias/datatable/dataTables.bootstrap4.min.css">
 </head>
 
 <body style="background-color: #e9ecef">
