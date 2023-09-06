@@ -12,10 +12,8 @@ if (isset($_SESSION['usuario'])) {
 					<h1 class="display-4">Sistema Unificado de Información de Investigación. </h1>
 					<p class="lead">Una Guatemala sin Drogas es Tarea de Todos.</p>
 					<hr class="my-4">
-					<p><img src="../img/Logo PNC.png" class="img-thumbnail" width="300px" /></p>
-					<p class="lead">
-						<a class="btn btn-primary btn-lg" href="categorias.php" role="button">Bienvenido</a>
-					</p>
+					<p><img src="../img/Logo PNC.jpeg" class="img-thumbnail" width="300px" /></p>
+					
 				</div>
 
 

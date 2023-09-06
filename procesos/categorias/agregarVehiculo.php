@@ -27,6 +27,7 @@ $imagenError = $_FILES["imagen"]["error"];
 	$datos = array (
             "IdVehiculo" => $_POST['IdVehiculo'],
             "NumeroCaso" => $_POST['NumeroCaso'],
+            "NumeroOficio" => $_POST['NumeroOficio'],
 			"Placa" => $_POST['Placa'],
 			"TipoVehiculo" => $_POST['TipoVehiculo'],
             "MarcaVehiculo" => $_POST['MarcaVehiculo'],

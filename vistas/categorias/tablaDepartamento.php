@@ -11,12 +11,14 @@ $conexion = $conexion->conexion();
 	<table class="table table-hover table-dark" id="tablaCategoriasDataTable">
 		<thead>
 			<tr style="text-align: center;">
-				<td>ID DEPARTAMENTO</td>
-				<td>CODIGO_DEPARTAMENTO</td>
-				<td>NOMBRE_DEPARTAMENTO</td>
-				<td>PAIS</td>
-				<td>Editar</td>
-				<td>Eliminar</td>
+				<th>ID DEPARTAMENTO</th>
+				<th>CODIGO_DEPARTAMENTO</th>
+				<th>NOMBRE_DEPARTAMENTO</th>
+				<th>PAIS</th>
+				<th>EDITAR</th>
+				<?php if($_SESSION['RolUsuario']=="ADMINISTRADOR"){?>
+				<th>ELIMINAR</td>
+				<?php }?>
 			</tr>
 		</thead>
 		<tbody>
@@ -36,12 +38,13 @@ $conexion = $conexion->conexion();
 					<td><?php echo $mostrar['CODIGO_DEPARTAMENTO']; ?></td>
 					<td><?php echo $mostrar['DEPARTAMENTO_NOMBRE']; ?></td>
 					<td><?php echo $mostrar['NOMBRE_PAIS']; ?></td>
+				
 					<td>
 						<span class="btn btn-warning btn-sm" onclick="obtenerDatosDepartamento('<?php echo $mostrar['DEPARTAMENTO_ID'] ?>')" data-toggle="modal" data-target="#modalAgregaDepartamento">
 							<span class="fas fa-edit"></span>
 						</span>
 					</td>
-
+					<?php if($_SESSION['RolUsuario']=='ADMINISTRADOR'){?>
 					<td>
 						<span class="btn btn-danger btn-sm" onclick="eliminarDepartameto('<?php echo $mostrar['DEPARTAMENTO_ID'] ?>')">
 							<span class="fas fa-trash-alt"></span>
@@ -50,6 +53,7 @@ $conexion = $conexion->conexion();
 				</tr>
 			<?php
 			}
+			}
 			?>
 		</tbody>
 	</table>
@@ -57,9 +61,6 @@ $conexion = $conexion->conexion();
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#tablaCategoriasDataTable').DataTable({
-			scrollY: 'auto',
-			paging: true
-		});
+		$('#tablaCategoriasDataTable').DataTable();
 	});
 </script>

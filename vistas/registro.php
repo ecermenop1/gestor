@@ -24,7 +24,7 @@
 					<input type="text" name="usuario" id="usuario" class="form-control" required="">
 					<label>Rol</label>
 					<select id="RolUsuario" name="RolUsuario" class="form-control" id="specificSizeSelect">
-                            <option selected value="">Seleccionar Pais</option>
+                            <option selected value="">Seleccionar Rol</option>
                              <option value="USUARIOESTANDAR">USUARIO ESTANDAR</option>
 							 <option value="ADMINISTRADOR">SUPERUSUARIO</option>
                         </select>

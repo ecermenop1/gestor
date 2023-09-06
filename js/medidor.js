@@ -15,7 +15,7 @@ function AddMedidores() {
 
 			success: function (respuesta) {
 				respuesta = respuesta.trim();
-				alert(respuesta);
+				//alert(respuesta);
 				if (respuesta == 1) {
 					$("#frmMedidor")[0].reset();
 					$('#tablaMedidores').load("categorias/tablaMedidores.php");
@@ -38,7 +38,7 @@ function obtenerDatosMedidor($id) {
 		data: { "idMedidor": $id },
 		url: "../procesos/categorias/obtenerMedidor.php",
 		success: function (respuesta) {
-			alert(respuesta)
+			//alert(respuesta)
 			respuesta = jQuery.parseJSON(respuesta);
 			$('#IdMedidor').val(respuesta['MEDIDOR_ID']);
 			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
@@ -68,7 +68,7 @@ function eliminarMedidor(idMedidor) {
 				data: { "idMedidor": idMedidor },
 	    		url:"../procesos/categorias/eliminarMedidor.php",
 	    		success:function(respuesta){
-					alert(respuesta);
+					//alert(respuesta);
 	    			respuesta = respuesta.trim();
 					
 	    			if (respuesta == 1) {

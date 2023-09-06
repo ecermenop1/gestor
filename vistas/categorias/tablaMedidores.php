@@ -14,8 +14,10 @@ $conexion = $conexion->conexion();
 				<th>NUMERO_CASO </th>
 				<th>NÚMERO MEDIDOR</th>
 				<th>EMPRESA ELÉCTRICA</th>
-				<th>EDITAR</th>
-				<th>ELIMINAR</th>
+				<td>EDITAR</td>
+				<?php if($_SESSION['RolUsuario']=="ADMINISTRADOR"){?>
+				<td>ELIMINAR</td>
+				<?php }?>
 
 
 
@@ -37,12 +39,13 @@ $conexion = $conexion->conexion();
 					<td><?php echo $mostrar['NUMERO_CASO']; ?></td>
 					<td><?php echo $mostrar['MEDIDOR_NUMERO']; ?></td>
 					<td><?php echo $mostrar['EMPRESAELECTRICA']; ?></td>
+					
 					<td>
 						<span class="btn btn-warning btn-sm" onclick="obtenerDatosMedidor('<?php echo $mostrar['MEDIDOR_ID'] ?>')" data-toggle="modal" data-target="#modalAgregaMedidor">
 							<span class="fas fa-edit"></span>
 						</span>
 					</td>
-
+					<?php if($_SESSION['RolUsuario']=="ADMINISTRADOR"){?>
 					<td>
 						<span class="btn btn-danger btn-sm" onclick="eliminarMedidor('<?php echo $mostrar['MEDIDOR_ID'] ?>')">
 							<span class="fas fa-trash-alt"></span>
@@ -51,6 +54,7 @@ $conexion = $conexion->conexion();
 				</tr>
 			<?php
 			}
+			}
 			?>
 		</tbody>
 	</table>
@@ -58,9 +62,6 @@ $conexion = $conexion->conexion();
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#tablaCategoriasDataTable').DataTable({
-			scrollY: 'auto',
-			paging: true
-		});
+		$('#tablaCategoriasDataTable').DataTable();
 	});
 </script>

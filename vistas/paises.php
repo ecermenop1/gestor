@@ -41,7 +41,7 @@ if (isset($_SESSION['usuario'])) {
             </div>
             <div class="modal-body">
                 <form id="frmPaises">
-                <input type="text" name="IdPais" id="IdPais" class="form-control">
+                <input type="hidden" name="IdPais" id="IdPais" class="form-control">
                     <label>Código País</label>
                     <input type="text" name="CodigoPais" id="CodigoPais" class="form-control">
                     <label>Nombre País</label>

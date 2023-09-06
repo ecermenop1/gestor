@@ -28,6 +28,7 @@ $imagenError = $_FILES["imagen"]["error"];
         
             "IdPropietario" => $_POST['IdPropietario'],
             "NumeroCaso" => $_POST['NumeroCaso'],
+            "NumeroOficio" => $_POST['NumeroOficio'],
 			"Nombre1" => $_POST['Nombre1'],
 			"Nombre2" => $_POST['Nombre2'],
             "Nombre3" => $_POST['Nombre3'],

@@ -11,12 +11,14 @@ $conexion = $conexion->conexion();
 	<table class="table table-hover table-dark" id="tablaCategoriasDataTable">
 		<thead>
 			<tr style="text-align: center;">
-				<td>ID MUNICIPIO</td>
-				<td>CODIGO_MUNICIPIO</td>
-				<td>MUNICIPIO</td>
-				<td>DEPARTAMENTO</td>
-				<td>EDITAR</td>
-				<td>ELIMINAR</td>
+				<th>ID MUNICIPIO</th>
+				<th>CODIGO_MUNICIPIO</th>
+				<th>MUNICIPIO</th>
+				<th>DEPARTAMENTO</th>
+					<th>EDITAR</th>
+					<?php if ($_SESSION['RolUsuario'] == "ADMINISTRADOR") { ?>
+					<th>ELIMINAR</th>
+				<?php } ?>
 
 			</tr>
 		</thead>
@@ -37,30 +39,31 @@ $conexion = $conexion->conexion();
 					<td><?php echo $mostrar['CODIGOMUNICIPIO']; ?></td>
 					<td><?php echo $mostrar['MUNICIPIO_NOMBRE']; ?></td>
 					<td><?php echo $mostrar['DEPARTAMENTO_NOMBRE']; ?></td>
-					<td>
-						<span class="btn btn-warning btn-sm" onclick="obtenerDatosMunicipio('<?php echo $mostrar['MUNICIPIO_ID'] ?>')" data-toggle="modal" data-target="#modalAgregaMuncipio">
-							<span class="fas fa-edit"></span>
-						</span>
-					</td>
-					<td>
-						<span class="btn btn-danger btn-sm" onclick="eliminarMunicipio('<?php echo $mostrar['MUNICIPIO_ID'] ?>')">
-							<span class="fas fa-trash-alt"></span>
-						</span>
-					</td>
+
+					
+						<td>
+							<span class="btn btn-warning btn-sm" onclick="obtenerDatosMunicipio('<?php echo $mostrar['MUNICIPIO_ID'] ?>')" data-toggle="modal" data-target="#modalAgregaMuncipio">
+								<span class="fas fa-edit"></span>
+							</span>
+						</td>
+						<td>
+						<?php if ($_SESSION['RolUsuario'] == "ADMINISTRADOR") { ?>
+							<span class="btn btn-danger btn-sm" onclick="eliminarMunicipio('<?php echo $mostrar['MUNICIPIO_ID'] ?>')">
+								<span class="fas fa-trash-alt"></span>
+							</span>
+						</td>
 				</tr>
 
-			<?php
-			}
-			?>
+		<?php
+					}
+				}
+		?>
 		</tbody>
 	</table>
 </div>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#tablaCategoriasDataTable').DataTable({
-			scrollY: 'auto',
-			paging: true
-		});
+		$('#tablaCategoriasDataTable').DataTable();
 	});
 </script>

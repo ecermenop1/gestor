@@ -18,7 +18,7 @@ if (isset($_SESSION['usuario'])) {
             <div class="row">
                 <div class="col-sm-4">
                     <span class="btn btn-warning" data-toggle="modal" onclick="RESETFORM()" data-target="#modalAgregaPersona">
-                        <span class="fas fa-plus-circle"></span> Nueva Personas
+                        <span class="fas fa-plus-circle"></span>  Personas
                     </span>
                 </div>
             </div>
@@ -55,7 +55,7 @@ if (isset($_SESSION['usuario'])) {
         <div class="modal-dialog " role="document" style="max-width: 70%;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nueva Persona</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Persona</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -64,11 +64,12 @@ if (isset($_SESSION['usuario'])) {
                 <div class="modal-body">
                     <form id="frmPersona" enctype="multipart/form-data">
                         <div class="form-row">
-                            <div class="col-md-3">
+                            <div class="col-md-12">
 
 
                                 <input type="hidden" class="form-control" id="IdPropietario" name="IdPropietario" placeholder="Obligatorio" required>
                                 <div class="form-group" id="files" style="width: 200px;
+                                margin:auto;
                                                         height: 400px,400px;
                                                             background-color: #f0f0f0; 
                                                             border-radius: 20px 20px 20px 20px; 
@@ -79,8 +80,14 @@ if (isset($_SESSION['usuario'])) {
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="nombre1">Número caso:</label>
+                                    <label for="nombre1">Número Caso:</label>
                                     <input type="number" class="form-control" id="NumeroCaso" name="NumeroCaso" placeholder="Obligatorio  " required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="nombre1">Número Oficio:</label>
+                                    <input type="number" class="form-control" id="NumeroOficio" name="NumeroOficio" placeholder="Obligatorio  " required>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -91,13 +98,13 @@ if (isset($_SESSION['usuario'])) {
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="nombre2">Segundo Apellido:</label>
+                                    <label for="nombre2">Segundo Nombre:</label>
                                     <input type="text" class="form-control" id="Nombre2" name="Nombre2" placeholder="Opcional">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="input1">Tercer Apellido:</label>
+                                    <label for="input1">Tercer Nombre:</label>
                                     <input type="text" class="form-control" id="Nombre3" name="Nombre3" placeholder="Opcional">
                                 </div>
                             </div>
@@ -110,13 +117,13 @@ if (isset($_SESSION['usuario'])) {
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="input1">Segundo Nombre:</label>
+                                    <label for="input1">Segundo Apellido:</label>
                                     <input type="text" class="form-control" id="Apellido2" name="Apellido2" placeholder="Obligatorio" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="input1">Tercer Nombre:</label>
+                                    <label for="input1">Tercer Apellido:</label>
                                     <input type="text" class="form-control" id="Apellido3" name="Apellido3" placeholder="Opcional">
                                 </div>
                             </div>
@@ -126,6 +133,9 @@ if (isset($_SESSION['usuario'])) {
                                     <label for="input1"> Fecha Nacimiento:</label>
                                     <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento">
                                 </div>
+                            </div>
+                            <div id="edadcalculada" class="col-md-3">
+                                
                             </div>
 
                             <div class="col-md-3">
@@ -218,9 +228,11 @@ if (isset($_SESSION['usuario'])) {
 
                     </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" id="botones">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary" id="btnGuardarPersona">Guardar</button>
+                    <button type="button" class="btn btn-primary" id="btnGuardarPersona" value="GENERAR PDF" ><a href="../clases/generarpdf.php"></button>
+                    <input type="buttom"  class="btn btn-primary" value="GENERAR PDF" a href="../clases/generarpdf.php">
                 </div>
             </div>
         </div>
@@ -254,11 +266,20 @@ if (isset($_SESSION['usuario'])) {
 
 
         function RESETFORM() {
-
+            $('#botones').show()
             $("#frmPersona")[0].reset();
 
             var imagenHTML = "<img  src='../fotosPersonas/defaultpersona.png' width='80%'>";
             $('#files').html(imagenHTML);
+
+            var EDADHTML = 
+			"<div class='form-group'>"+
+			"<label for='input1'> EDAD:</label>"+
+				"<input type='input' value='0' class='form-control' readonly>"+
+				"</div>";
+			$('#edadcalculada').html(EDADHTML);
+
+            
         }
     </script>
 <?php

@@ -8,15 +8,23 @@
 											nombre,
 											tipo,
 											ruta,
-											NUMERO_CASO
+											NUMERO_CASO,
+											NUMERO_OFICIO,
+											ASUNTO,
+											FECHA_OFICIO
+
 											)
-							VALUES (?,?,?,?,?)";
+							VALUES (?,?,?,?,?,?,?,?)";
 			$query = $conexion->prepare($sql);
-			$query->bind_param('issss', $datos['idUsuario'],
+			$query->bind_param('isssssss', $datos['idUsuario'],
 										$datos['nombreArchivo'],
 										$datos['tipo'],
 										$datos['ruta'],
 										$datos['numerocaso'],
+										$datos['NumeroOficio'],
+										$datos['Asunto'],
+										$datos['FechaOficio'],
+										
 										);
 										
 
@@ -70,6 +78,9 @@
 				case 'jpg':
 					return '<img src="'.$ruta.'" width="80%">';
 					break;
+					case 'jpeg':
+						return '<img src="'.$ruta.'" width="80%">';
+						break;
 
 				case 'pdf':
 					return '<embed src="' . $ruta . '#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="600px" />';

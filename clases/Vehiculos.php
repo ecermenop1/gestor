@@ -9,6 +9,7 @@ class Vehiculos extends Conectar
         $conexion = Conectar::conexion();
 
         $sql = "INSERT INTO TB_VEHICULO (NUMERO_CASO,
+                                            NUMERO_OFICIO,
                                             PLACA, 
                                             TIPO_VEHICULO,
                                             MARCA_VEHICULO,
@@ -17,11 +18,12 @@ class Vehiculos extends Conectar
                                             COLOR_VEHICULO,
                                             FOTO_VEHICULO
                                           ) 
-							VALUES (?,?,?,?,?,?,?,?)";
+							VALUES (?,?,?,?,?,?,?,?,?)";
         $query = $conexion->prepare($sql);
         $query->bind_param(
-            "ssssssss",
+            "sssssssss",
             $datos['NumeroCaso'],
+            $datos['NumeroOficio'],
             $datos['Placa'],
             $datos['TipoVehiculo'],
             $datos['MarcaVehiculo'],
@@ -42,6 +44,7 @@ class Vehiculos extends Conectar
         $sql = "UPDATE TB_VEHICULO
                 SET    
                                             NUMERO_CASO=?,
+                                            NUMERO_OFICIO=?,
                                             PLACA=?, 
                                             TIPO_VEHICULO=?,
                                             MARCA_VEHICULO=?,
@@ -51,8 +54,9 @@ class Vehiculos extends Conectar
                                             FOTO_VEHICULO=?
                                             WHERE ID_VEHICULO =?";
                                            $query = $conexion->prepare($sql);
-                                            $query->bind_param("ssssssssi", 
+                                            $query->bind_param("sssssssssi", 
                                             $datos['NumeroCaso'],
+                                            $datos['NumeroOficio'],
                                             $datos['Placa'],
                                             $datos['TipoVehiculo'],
                                             $datos['MarcaVehiculo'],

@@ -7,6 +7,7 @@
     $idUsuario = $_SESSION['idUsuario'];
 	$datos = array (
             "IdDireccion" => $_POST['IdDireccion'],
+            "NumeroOficio" => $_POST['NumeroOficio'],
             "NumeroCaso" => $_POST['NumeroCaso'],
 			"Calle" => $_POST['Calle'],
             "Avenida" => $_POST['Avenida'],

@@ -4,6 +4,9 @@
 	$Gestor =  new Gestor();
 	$numerocaso = $_POST['numerocaso'];
 	$idUsuario = $_SESSION['idUsuario'];
+	$NumeroOficio = $_POST['NumeroOficio'];
+	$Asunto = $_POST['Asunto'];
+	$FechaOficio = $_POST['FechaOficio'];
 
 	if($_FILES['archivos']['size'] > 0) {
 
@@ -28,6 +31,9 @@
 										"tipo" => $tipoArchivo,
 										"ruta" => $rutaFinal,
 										"numerocaso" => $numerocaso,
+										"NumeroOficio" => $NumeroOficio,
+										"Asunto" => $Asunto,
+										"FechaOficio" => $FechaOficio
 										
 										);
 

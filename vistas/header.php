@@ -31,7 +31,7 @@ error_reporting(E_ALL);
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
             <a class="navbar-brand" href="inicio.php">
-                <img src="../img/Logo PNC.png" alt="" width="50px">
+                <img src="../img/Logo PNC.jpeg" alt="" width="50px">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@ error_reporting(E_ALL);
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                             aria-expanded="false">
-                            CATEGORIAS
+                            GESTIONES
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="paises.php">Paises</a>
@@ -75,7 +75,7 @@ error_reporting(E_ALL);
                             <a class="dropdown-item" href="caso.php">Casos</a>
                           
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                           
                         </div>
                     </li>
                     <li class="nav-item">

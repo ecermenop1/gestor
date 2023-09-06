@@ -16,7 +16,7 @@ function AddLugarPoblado() {
 			
 			success:function(respuesta){
 				respuesta = respuesta.trim();
-                alert(respuesta);
+               // alert(respuesta);
 				if (respuesta == 1) {
                     $("#frmLugarPoblado")[0].reset();
 					$('#tablaLugaresPoblados').load("categorias/tablaLugaresPoblados.php");

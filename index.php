@@ -15,7 +15,7 @@
     <!-- Icon -->
     <div class="fadeIn first">
       <p></p>
-      <img src="img/Logo PNC.png" class="img-thumbnail" width="80px" id="icon" alt="User Icon" />
+      <img src="img/Logo PNC.JPEG" class="img-thumbnail" width="80px" id="icon" alt="User Icon" />
       <h1>INVESTIGACIÓN SGAIA</h1>
     </div>
 

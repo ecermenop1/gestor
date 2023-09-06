@@ -9,6 +9,7 @@ class Direcciones extends Conectar
         $conexion = Conectar::conexion();
 
         $sql = "INSERT INTO TB_DIRECCIONES (NUMERO_CASO,
+                                            NUMERO_OFICIO,
                                             CALLE, 
                                             AVENIDA,
                                             NUMERO_CASA,
@@ -24,11 +25,12 @@ class Direcciones extends Conectar
                                             USUARIO
 
                                           ) 
-							VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+							VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $query = $conexion->prepare($sql);
         $query->bind_param(
-            "ssssisiiisssis",
+            "sssssisiiisssis",
             $datos['NumeroCaso'],
+            $datos['NumeroOficio'],
             $datos['Calle'],
             $datos['Avenida'],
             $datos['NumeroCasa'],
@@ -59,6 +61,7 @@ class Direcciones extends Conectar
         $sql = "UPDATE TB_DIRECCIONES
                 SET    
                                           NUMERO_CASO=?,
+                                          NUMERO_OFICIO=?,
                                             CALLE =?, 
                                             AVENIDA =?,
                                             NUMERO_CASA =?,
@@ -74,8 +77,9 @@ class Direcciones extends Conectar
                                             USUARIO =?
                                             WHERE DIRECCION_ID =?";
                                            $query = $conexion->prepare($sql);
-                                            $query->bind_param("ssssisiiisssisi", 
+                                            $query->bind_param("sssssisiiisssisi", 
                                             $datos['NumeroCaso'],
+                                            $datos['NumeroOficio'],
                                             $datos['Calle'],
                                             $datos['Avenida'],
                                             $datos['NumeroCasa'],

@@ -11,16 +11,21 @@ $conexion = $conexion->conexion();
 	<table class="table table-hover table-dark" id="tablaCategoriasDataTable">
 		<thead>
 			<tr style="text-align: center;">
-				<td>Número Caso </td>
-				<td>Placa </td>
-				<td>Tipo Vehiculo</td>
-				<td>Marca Vehiculo</td>
-				<td>Linea Vehiculo </td>
-				<td>Modelo</td>
-				<td>Color</td>
-				<th>Descargar</th>
-				<th>Visualizar</th>
-				<th>Editar</th>
+				<th>CASO</th>
+				<th> OFICIO</th>
+				<th>PLACA </th>
+				<th>TIPO VEHICULO</th>
+				<th>MARCA VEHICULO</th>
+				<th>LINEA VEHICULO </th>
+				<th>MODELO</th>
+				<th>COLOR</th>
+				
+					<th>DESCARGAR</th>
+					<th>VISUALIZAR</th>
+					<th>EDITAR</th>
+					<?php if ($_SESSION['RolUsuario'] == "ADMINISTRADOR") { ?>
+					<th>ELIMINAR</th>
+				<?php } ?>
 
 			</tr>
 		</thead>
@@ -36,37 +41,40 @@ $conexion = $conexion->conexion();
 			?>
 				<tr style="text-align: center;">
 					<td><?php echo $mostrar['NUMERO_CASO']; ?></td>
+					<td><?php echo $mostrar['NUMERO_OFICIO']; ?></td>
 					<td><?php echo $mostrar['PLACA']; ?></td>
 					<td><?php echo $mostrar['TIPO_VEHICULO']; ?></td>
 					<td><?php echo $mostrar['MARCA_VEHICULO']; ?></td>
 					<td><?php echo $mostrar['LINEA_VEHICULO']; ?></td>
 					<td><?php echo $mostrar['MODELO_VEHICULO']; ?></td>
 					<td><?php echo $mostrar['COLOR_VEHICULO']; ?></td>
-					<td>
-						<a href="<?php echo $mostrar['FOTO_VEHICULO'] ?>" download="<?php echo date('d-m-y h:i:s') ?>" class="btn btn-success btn-sm">
-							<span class="fas fa-download"></span>
-						</a>
-					</td>
-					<td>
-						<span class="btn btn-primary btn-sm" data-toggle="modal" data-target="#visualizarArchivo" onclick="obtenerImagen('<?php echo  $mostrar['FOTO_VEHICULO'] ?>')">
-							<span class="fas fa-eye"></span>
-					</td>
-					<td>
-						<span class="btn btn-warning btn-sm" onclick="obtenerDatosVehiculos('<?php echo $mostrar['ID_VEHICULO'] ?>')" data-toggle="modal" data-target="#modalAgregaVehiculo">
-							<span class="fas fa-edit"></span>
-						</span>
-					</td>
-
-					<td>
-						<span class="btn btn-danger btn-sm" onclick="eliminarVehiculo('<?php echo $mostrar['ID_VEHICULO'] ?>')">
-							<span class="fas fa-trash-alt"></span>
-						</span>
-					</td>
+					
+						<td>
+							<a href="<?php echo $mostrar['FOTO_VEHICULO'] ?>" download="<?php echo date('d-m-y h:i:s') ?>" class="btn btn-success btn-sm">
+								<span class="fas fa-download"></span>
+							</a>
+						</td>
+						<td>
+							<span class="btn btn-primary btn-sm" data-toggle="modal" data-target="#visualizarArchivo" onclick="obtenerImagen('<?php echo  $mostrar['FOTO_VEHICULO'] ?>')">
+								<span class="fas fa-eye"></span>
+						</td>
+						<td>
+							<span class="btn btn-warning btn-sm" onclick="obtenerDatosVehiculos('<?php echo $mostrar['ID_VEHICULO'] ?>')" data-toggle="modal" data-target="#modalAgregaVehiculo">
+								<span class="fas fa-edit"></span>
+							</span>
+						</td>
+						<?php if ($_SESSION['RolUsuario'] == "ADMINISTRADOR") { ?>
+						<td>
+							<span class="btn btn-danger btn-sm" onclick="eliminarVehiculo('<?php echo $mostrar['ID_VEHICULO'] ?>')">
+								<span class="fas fa-trash-alt"></span>
+							</span>
+						</td>
 
 				</tr>
-			<?php
-			}
-			?>
+		<?php
+					}
+				}
+		?>
 		</tbody>
 	</table>
 </div>
@@ -82,9 +90,6 @@ $conexion = $conexion->conexion();
 
 
 	$(document).ready(function() {
-		$('#tablaCategoriasDataTable').DataTable({
-			scrollY: 'auto',
-			paging: true
-		});
+		$('#tablaCategoriasDataTable').DataTable();
 	});
 </script>

@@ -19,7 +19,7 @@ if (isset($_SESSION['usuario'])) {
             <div class="row">
                 <div class="col-sm-4">
                     <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregarDirecciones">
-                        <span class="fas fa-plus-circle"></span> Nueva Dirección
+                        <span class="fas fa-plus-circle"></span>  Dirección
                     </span>
                 </div>
             </div>
@@ -39,7 +39,7 @@ if (isset($_SESSION['usuario'])) {
         <div class="modal-dialog " role="document" style="max-width: 70%;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nueva Dirección</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Dirección</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -52,6 +52,12 @@ if (isset($_SESSION['usuario'])) {
                                 <div class="form-group">
                                     <label for="nombre1">Número de Caso:</label>
                                     <input type="number" class="form-control" id="NumeroCaso" name="NumeroCaso" placeholder="Obligatorio  " required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="nombre1">Número de Oficio:</label>
+                                    <input type="number" class="form-control" id="NumeroOficio" name="NumeroOficio" placeholder="Obligatorio  " required>
                                 </div>
                             </div>
                             <div class="col-md-4">

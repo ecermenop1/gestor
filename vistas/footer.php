@@ -6,6 +6,7 @@
 	<script src="../librerias/datatable/jquery.dataTables.min.js"></script>
 	<script src="../librerias/datatable/dataTables.bootstrap4.min.js"></script>
 	<script src="js/tesseract-ocr.js"></script>
-	
+
+
 	</body>
 </html>

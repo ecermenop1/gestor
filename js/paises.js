@@ -63,7 +63,7 @@ function obtenerDatosPais($id) {
 				data: { "idPais": idPais },
 	    		url:"../procesos/categorias/eliminarPais.php",
 	    		success:function(respuesta){
-					alert(respuesta);
+					//alert(respuesta);
 	    			respuesta = respuesta.trim();
 					
 	    			if (respuesta == 1) {

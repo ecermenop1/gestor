@@ -55,6 +55,12 @@ if (isset($_SESSION['usuario'])) {
                                     <input type="text" class="form-control" id="NumeroCaso" name="NumeroCaso" placeholder="Obligatorio  " required>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="nombre1">MUMERO CASO:</label>
+                                    <input type="text" class="form-control" id="NumeroCaso" name="NumeroCaso" placeholder="Obligatorio  " required>
+                                </div>
+                            </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">

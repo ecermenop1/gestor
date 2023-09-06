@@ -11,7 +11,10 @@
 				tipo as tipoArchivo,
 					ruta as rutaArchivo,
 					fecha as fecha,
-					NUMERO_CASO 
+					NUMERO_CASO,
+					NUMERO_OFICIO,
+					ASUNTO,
+					FECHA_OFICIO
 					
 				FROM
 					t_archivos ";
@@ -29,6 +32,9 @@
 				<thead>
 					<tr>
 						<th>Numero Caso</th>
+						<th>Numero Oficio</th>
+						<th>Numero Asunto</th>
+						<th>Fecha Oficio</th>
 						
 						<th>Archivo</th>
 						<th>Descargar</th>
@@ -43,7 +49,7 @@
 						Arreglo de extensiones validas
 					*/
 
-					$extensionesValidas = array('png', 'jpg', 'pdf', 'mp3', 'mp4');
+					$extensionesValidas = array('png', 'jpg','jpeg', 'pdf', 'mp3', 'mp4');
 
 					while($mostrar = mysqli_fetch_array($result)) { 
 
@@ -57,6 +63,10 @@
 					
 					
 					<td><?php echo $NUMEROCASO;?></td>
+					<td><?php echo $mostrar['NUMERO_OFICIO'];?></td>
+					<td><?php echo $mostrar['ASUNTO'];?></td>
+					<td><?php echo $mostrar['FECHA_OFICIO'];?></td>
+					
 						<td><?php echo $mostrar['nombreArchivo']; ?></td>
 					
 						<td>

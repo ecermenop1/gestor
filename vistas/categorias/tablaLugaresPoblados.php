@@ -17,7 +17,9 @@ $conexion = $conexion->conexion();
 				<td>RURALIDADES</td>
 				<td>LUGARPOBLADO_ZONAYCALLE</td>
 				<td>EDITAR</td>
+				<?php if($_SESSION['RolUsuario']=="ADMINISTRADOR"){?>
 				<td>ELIMINAR</td>
+				<?php }?>
 
 
 			</tr>
@@ -42,11 +44,13 @@ $conexion = $conexion->conexion();
 					<td><?php echo $mostrar['TIPO_LUGARPOBLADO']; ?></td>
 					<td><?php echo $mostrar['RURALIDADES_LUGARPOBLADO']; ?></td>
 					<td><?php echo $mostrar['LUGARPOBLADO_ZONAYCALLE']; ?></td>
+					
 					<td>
 						<span class="btn btn-warning btn-sm" onclick="obtenerDatosLugarPoblado('<?php echo $mostrar['LUGARPOBLADO_ID'] ?>')" data-toggle="modal" data-target="#modalAgregaLugarPoblado">
 							<span class="fas fa-edit"></span>
 						</span>
 					</td>
+					<?php if($_SESSION['RolUsuario']=="ADMINISTRADOR"){?>
 					<td>
 						<span class="btn btn-danger btn-sm" onclick="eliminarLugarPoblado('<?php echo $mostrar['LUGARPOBLADO_ID'] ?>')">
 							<span class="fas fa-trash-alt"></span>
@@ -55,6 +59,7 @@ $conexion = $conexion->conexion();
 				</tr>
 			<?php
 			}
+			}
 			?>
 		</tbody>
 	</table>
@@ -62,9 +67,6 @@ $conexion = $conexion->conexion();
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#tablaCategoriasDataTable').DataTable({
-			scrollY: 'auto',
-			paging: true
-		});
+		$('#tablaCategoriasDataTable').DataTable();
 	});
 </script>

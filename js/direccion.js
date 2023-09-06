@@ -4,7 +4,7 @@ function AddDirecciones() {
 	
 	if ($('#NumeroCaso').val()==""||$('#Calle').val()==""||$('#Avenida').val()==""||$('#NumeroCasa').val()==""
     ||$('#IdMunicipio').val()==""||$('#IdLugarPoblado').val()==""
-    ||$('#IdDepartamento').val()==""
+    ||$('#IdDepartamento').val()==""||$('#NumeroOficio').val()==""
     ||$('#IdPais').val()=="") {
 		swal("Llenar Todos los campos que son obligatorios");
 		return false;
@@ -17,7 +17,7 @@ function AddDirecciones() {
 			
 			success:function(respuesta){
 				respuesta = respuesta.trim();
-                alert(respuesta);
+               // alert(respuesta);
 				if (respuesta == 1) {
                     $("#frmDirecciones")[0].reset();
 				
@@ -45,6 +45,7 @@ function obtenerDatosDireccion($id) {
 			respuesta = jQuery.parseJSON(respuesta);
 			$('#IdDireccion').val(respuesta['DIRECCION_ID']);
 			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
+			$('#NumeroOficio').val(respuesta['NUMERO_OFICIO']);
 			$('#Calle').val(respuesta['CALLE']);
 			$('#Avenida').val(respuesta['AVENIDA']);
 			$('#NumeroCasa').val(respuesta['NUMERO_CASA']);
@@ -64,7 +65,7 @@ function obtenerDatosDireccion($id) {
 
 
  function eliminarDireccion(idDireccion) {
-	alert(idDireccion)
+	//alert(idDireccion)
 	swal({
 	  title: "Estas seguro de eliminar este Registro?",
 	  text: "Una vez eliminado, no podra recuperarse!",
@@ -81,7 +82,7 @@ function obtenerDatosDireccion($id) {
 				data: { "idDireccion": idDireccion },
 	    		url:"../procesos/categorias/eliminarDireccion.php",
 	    		success:function(respuesta){
-					alert(respuesta);
+					//alert(respuesta);
 	    			respuesta = respuesta.trim();
 					
 	    			if (respuesta == 1) {

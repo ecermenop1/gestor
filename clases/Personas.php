@@ -9,6 +9,7 @@ class Personas extends Conectar
         $conexion = Conectar::conexion();
 
         $sql = "INSERT INTO TB_PROPIETARIO (NUMERO_CASO,
+                                            NUMERO_OFICIO,
                                             NOMBRE1, 
                                             NOMBRE2,
                                             NOMBRE3,
@@ -28,11 +29,12 @@ class Personas extends Conectar
                                             ALIAS,
                                             RUTA_FOTO
                                           ) 
-							VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+							VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $query = $conexion->prepare($sql);
         $query->bind_param(
-            "sssssssssssssssssss",
+            "ssssssssssssssssssss",
             $datos['NumeroCaso'],
+            $datos['NumeroOficio'],
             $datos['Nombre1'],
             $datos['Nombre2'],
             $datos['Nombre3'],
@@ -65,6 +67,7 @@ class Personas extends Conectar
         $sql = "UPDATE TB_PROPIETARIO
                 SET    
                                             NUMERO_CASO=?,
+                                            NUMERO_OFICIO=?,
                                             NOMBRE1=?, 
                                             NOMBRE2=?,
                                             NOMBRE3=?,
@@ -85,8 +88,9 @@ class Personas extends Conectar
                                             RUTA_FOTO=?
                                             WHERE PROPIETARIO_ID =?";
                                            $query = $conexion->prepare($sql);
-                                            $query->bind_param("sssssssssssssssssssi", 
+                                            $query->bind_param("ssssssssssssssssssssi", 
                                             $datos['NumeroCaso'],
+                                            $datos['NumeroOficio'],
                                             $datos['Nombre1'],
                                             $datos['Nombre2'],
                                             $datos['Nombre3'],
@@ -115,7 +119,7 @@ class Personas extends Conectar
     public function obtenerPropietario($IDPROPIETARIO) {
         $conexion = Conectar::conexion();
 
-        $sql = "SELECT *
+        $sql = "SELECT *,TIMESTAMPDIFF(YEAR, fecha_nacimiento, CURDATE()) AS 'EDAD'
                 FROM TB_PROPIETARIO
                 WHERE PROPIETARIO_ID ='$IDPROPIETARIO'";
         $result = mysqli_query($conexion, $sql);

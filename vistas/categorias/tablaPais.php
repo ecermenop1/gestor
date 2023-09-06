@@ -11,11 +11,14 @@ $conexion = $conexion->conexion();
 	<table class="table table-hover table-dark" id="tablaCategoriasDataTable">
 		<thead>
 			<tr style="text-align: center;">
-				<td>ID_PAIS</td>
-				<td>CODIGO_PAIS</td>
-				<td>NOMBRE_PAIS</td>
-				<td>Editar</td>
-				<td>Eliminar</td>
+				<th>ID_PAIS</th>
+				<th>CODIGO_PAIS</th>
+				<th>NOMBRE_PAIS</th>
+				
+				<th>EDITAR</th>
+				<?php if($_SESSION['RolUsuario']=="ADMINISTRADOR"){?>
+				<th>ELIMINAR</th>
+				<?php }?>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,16 +29,19 @@ $conexion = $conexion->conexion();
 
 			while ($mostrar = mysqli_fetch_array($result)) {
 				//$paisid = $mostrar['PAIS_ID'];
+				
 			?>
 				<tr style="text-align: center;">
 					<td><?php echo $mostrar['PAIS_ID']; ?></td>
 					<td><?php echo $mostrar['CODIGO_PAIS']; ?></td>
 					<td><?php echo $mostrar['NOMBRE_PAIS']; ?></td>
+					
 					<td>
 						<span class="btn btn-warning btn-sm" onclick="obtenerDatosPais('<?php echo $mostrar['PAIS_ID'] ?>')" data-toggle="modal" data-target="#modalAgregaPais">
 							<span class="fas fa-edit"></span>
 						</span>
 					</td>
+					<?php if($_SESSION['RolUsuario']=='ADMINISTRADOR'){?>
 					<td>
 						<span class="btn btn-danger btn-sm" onclick="eliminarPais('<?php echo $mostrar['PAIS_ID'] ?>')">
 							<span class="fas fa-trash-alt"></span>
@@ -44,6 +50,7 @@ $conexion = $conexion->conexion();
 				</tr>
 			<?php
 			}
+			}
 			?>
 		</tbody>
 	</table>
@@ -51,9 +58,6 @@ $conexion = $conexion->conexion();
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#tablaCategoriasDataTable').DataTable({
-			scrollY: 'auto',
-			paging: true
-		});
+		$('#tablaCategoriasDataTable').DataTable();
 	});
 </script>

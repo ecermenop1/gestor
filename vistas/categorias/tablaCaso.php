@@ -16,8 +16,11 @@ $conexion = $conexion->conexion();
 				<td>FECHA INICIO</td>
 				<td>FECHA CIERRE</td>
 				<td> ESTADO</td>
-				<td> EDITAR</td>
-				<td> ELIMINAR</td>
+				<?php if ($_SESSION['RolUsuario'] == "ADMINISTRADOR") { ?>
+					<td> EDITAR</td>
+					<td> ELIMINAR</td>
+				<?php } ?>
+
 			</tr>
 		</thead>
 		<tbody>
@@ -42,16 +45,17 @@ $conexion = $conexion->conexion();
 							<span class="fas fa-edit"></span>
 						</span>
 					</td>
-
-					<td>
-						<span class="btn btn-danger btn-sm" onclick="eliminarCaso('<?php echo $mostrar['CASO_ID'] ?>')">
-							<span class="fas fa-trash-alt"></span>
-						</span>
-					</td>
+					<?php if ($_SESSION['RolUsuario'] == "ADMINISTRADOR") { ?>
+						<td>
+							<span class="btn btn-danger btn-sm" onclick="eliminarCaso('<?php echo $mostrar['CASO_ID'] ?>')">
+								<span class="fas fa-trash-alt"></span>
+							</span>
+						</td>
 				</tr>
-			<?php
-			}
-			?>
+		<?php
+					}
+				}
+		?>
 		</tbody>
 	</table>
 </div>

@@ -15,7 +15,7 @@ function AddDepartamentos() {
 			
 			success:function(respuesta){
 				respuesta = respuesta.trim();
-				alert(respuesta);
+				//alert(respuesta);
 				if (respuesta == 1) {
 					$("#frmDepartamentos")[0].reset();
 					$('#tablaDepartamentos').load("categorias/tablaDepartamento.php");
@@ -49,7 +49,7 @@ function obtenerDatosDepartamento($id) {
 
 
  function eliminarDepartameto(idDepartamento) {
-	alert(idDepartamento)
+	
 	swal({
 	  title: "Estas seguro de eliminar este Registro?",
 	  text: "Una vez eliminado, no podra recuperarse!",

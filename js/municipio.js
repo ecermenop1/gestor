@@ -15,7 +15,7 @@ function AddMunicipio() {
 			
 			success:function(respuesta){
 				respuesta = respuesta.trim();
-                alert(respuesta);
+                //alert(respuesta);
 				if (respuesta == 1) {
 					$("#frmMunicipios")[0].reset();
 					$('#tablaMunicipios').load("categorias/tablaMunicipios.php");
@@ -68,7 +68,7 @@ function obtenerDatosMunicipio($id) {
 				data: { "idMunicipio": idMunicipio },
 	    		url:"../procesos/categorias/eliminarMunicipio.php",
 	    		success:function(respuesta){
-					alert(respuesta);
+					//alert(respuesta);
 	    			respuesta = respuesta.trim();
 					
 	    			if (respuesta == 1) {

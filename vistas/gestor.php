@@ -35,6 +35,12 @@ if(isset($_SESSION['usuario'])){
 					<form id="frmArchivos" enctype="multipart/form-data">
 						<label>NÚMERO DE CASO</label>
 						<input type="NUMBRE" name="numerocaso" id="numerocaso" class="form-control" multiple="multiple">
+						<label>NÚMERO DE OFICIO</label>
+						<input type="NUMBRE" name="NumeroOficio" id="NumeroOficio" class="form-control" multiple="multiple">
+						<label>ASUNTO</label>
+						<input type="input" name="Asunto" id="Asunto" class="form-control" multiple="multiple">
+						<label>FECHA OFICIO</label>
+						<input type="date" name="FechaOficio" id="FechaOficio" class="form-control" multiple="multiple">
 						<label>Selecciona archivos</label>
 						<input type="file" name="archivos[]" id="archivos" class="form-control" multiple="multiple">
 					</form>

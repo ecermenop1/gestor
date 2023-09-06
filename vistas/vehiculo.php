@@ -57,7 +57,7 @@ if (isset($_SESSION['usuario'])) {
         <div class="modal-dialog " role="document" style="max-width: 70%;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Vehiculo</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Vehiculo</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -66,12 +66,13 @@ if (isset($_SESSION['usuario'])) {
                     <form id="frmVehiculo" enctype="multipart/form-data">
                         <div class="form-row">
                         <input type="hidden" class="form-control" id="IdVehiculo" name="IdVehiculo" placeholder="Obligatorio" >
-                            <div class="col-md-3">
+                            <div class="col-md-12">
 
 
                               
                                 <div class="form-group" id="files" style="width: 200px;
                         height: 400px,400px;
+                        margin:auto;
                             background-color: #f0f0f0; 
                             border-radius: 20px 20px 20px 20px; 
                             overflow: hidden;">
@@ -83,6 +84,13 @@ if (isset($_SESSION['usuario'])) {
                                 <div class="form-group">
                                     <label for="nombre1">Numero Caso:</label>
                                     <input type="number" class="form-control" id="NumeroCaso" name="NumeroCaso" placeholder="Obligatorio  " required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="nombre1">Numero Oficio:</label>
+                                    <input type="number" class="form-control" id="NumeroOficio" name="NumeroOficio" placeholder="Obligatorio  " required>
                                 </div>
                             </div>
 

@@ -3,7 +3,7 @@ function AddVehiculo() {
 	
 	if ($('#NumeroCaso').val()== ""  ||$('#Placa').val() == "" || $('#TipoVehiculo').val() == "" ||
 		$('#MarcaVehiculo').val() == "" || $('#LineaVehiculo').val() == "" ||
-		$('#Modelo').val() == "" || $('#ColorVehiculo').val() == "" ) {
+		$('#Modelo').val() == "" || $('#ColorVehiculo').val() == ""|| $('#NumeroOficio').val() == "" ) {
 		swal("Todos los campos son obligatorios");
 		return false;
 	} else {
@@ -55,6 +55,7 @@ function obtenerDatosVehiculos($id) {
 			var imagenHTML = "<img  src='"+respuesta['FOTO_VEHICULO']+"' width='80%'>";
 			$('#files').html(imagenHTML);
 			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
+			$('#NumeroOficio').val(respuesta['NUMERO_OFICIO']);
 			$('#IdVehiculo').val(respuesta['ID_VEHICULO']);
 			$('#Placa').val(respuesta['PLACA']);
 			$('#TipoVehiculo').val(respuesta['TIPO_VEHICULO']);
