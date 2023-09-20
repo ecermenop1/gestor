@@ -49,8 +49,6 @@ move_uploaded_file($imagenTmp, $rutaFinal);
             "RutaImagen" => $rutaFinalimagen,
             "idUsuario" =>  $idUsuario
             
-
-
 					);
 				if( $_POST['IdDireccion']==""){
                    echo $Direcciones->agregarDirecciones($datos);
