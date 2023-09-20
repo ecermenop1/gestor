@@ -79,7 +79,7 @@ error_reporting(E_ALL);
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gestor.php"> <span class="far fa-folder"></span> Archivos</a>
+                        <a class="nav-link" href="gestor.php"> <span class="far fa-folder"></span> Oficios</a>
                     </li>
                   
 
