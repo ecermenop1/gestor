@@ -18,7 +18,7 @@ if (isset($_SESSION['usuario'])) {
             <div class="row">
                 <div class="col-sm-4">
                     <span class="btn btn-warning" data-toggle="modal" onclick="RESETFORM()" data-target="#modalAgregaPersona">
-                        <span class="fas fa-plus-circle"></span>  Personas
+                        <span class="fas fa-plus-circle"></span> Personas
                     </span>
                 </div>
             </div>
@@ -135,7 +135,7 @@ if (isset($_SESSION['usuario'])) {
                                 </div>
                             </div>
                             <div id="edadcalculada" class="col-md-3">
-                                
+
                             </div>
 
                             <div class="col-md-3">
@@ -229,11 +229,18 @@ if (isset($_SESSION['usuario'])) {
                     </form>
                 </div>
                 <div class="modal-footer" id="botones">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="btnGuardarPersona">Guardar</button>
-                    <button type="button" class="btn btn-primary" id="btnGuardarPersona" value="GENERAR PDF" ><a href="../clases/generarpdf.php"></button>
-                    <input type="buttom"  class="btn btn-primary" value="GENERAR PDF" a href="../clases/generarpdf.php">
+                    <button type="button" class="btn btn-secondary" onclick="pdf()" data-dismiss="modal">Cerrar</button>
+                    <button type="button"  class="btn btn-primary" id="btnGuardarPersona">Guardar</button>
+                    
+                   
                 </div>
+                <div class="modal-footer" id="botones1">
+                   
+                    <div id="pdfinyect"></div>
+                   
+                </div>
+                
+                
             </div>
         </div>
     </div>
@@ -262,24 +269,36 @@ if (isset($_SESSION['usuario'])) {
             /*$('#btnActualizaCategoria').click(function(){
             	actualizaCategoria();
             });*/
-        });
+    });
 
 
         function RESETFORM() {
+            $('#botones1').hide();
             $('#botones').show()
+            
+          
             $("#frmPersona")[0].reset();
 
             var imagenHTML = "<img  src='../fotosPersonas/defaultpersona.png' width='80%'>";
             $('#files').html(imagenHTML);
 
-            var EDADHTML = 
-			"<div class='form-group'>"+
-			"<label for='input1'> EDAD:</label>"+
-				"<input type='input' value='0' class='form-control' readonly>"+
-				"</div>";
-			$('#edadcalculada').html(EDADHTML);
+            var EDADHTML =
+                "<div class='form-group'>" +
+                "<label for='input1'> EDAD:</label>" +
+                "<input type='input' value='0' class='form-control' readonly>" +
+                "</div>";
+            $('#edadcalculada').html(EDADHTML);
 
-            
+
+        }
+
+        function pdf() {
+            var v = $('#IdPropietario').val();
+
+
+            var pdf = ' <a href="../clases/generarpdfPersona.php?valor=' + v + '" target="_blank" class="btn btn-success"><span class="fa fa-file-pdf"></span>  PDF</a>'
+            $('#pdfinyect').html(pdf);
+           
         }
     </script>
 <?php

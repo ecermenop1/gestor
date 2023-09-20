@@ -41,9 +41,7 @@ if (isset($_SESSION['usuario'])) {
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div id="imagenobtenida"> </div>
-                </div>
+               
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
@@ -63,7 +61,7 @@ if (isset($_SESSION['usuario'])) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="frmVehiculo" enctype="multipart/form-data">
+                    <form id="frmVehiculo" >
                         <div class="form-row">
                         <input type="hidden" class="form-control" id="IdVehiculo" name="IdVehiculo" placeholder="Obligatorio" >
                             <div class="col-md-12">
@@ -132,6 +130,36 @@ if (isset($_SESSION['usuario'])) {
                                 </div>
                             </div>
 
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="input1">Número Chasis:</label>
+                                    <input type="text" class="form-control" id="NumeroChasis" name="NumeroChasis" placeholder="Opcional">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="input1">Número Motor:</label>
+                                    <input type="text" class="form-control" id="NumeroMotor" name="NumeroMotor" placeholder="Opcional">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                <label for="input1">Propietario:</label>
+                                    <select id="IdPropietario" name="IdPropietario" class="form-control" id="specificSizeSelect">
+                                        <option selected value="">Seleccionar Lugar Poblado</option>
+                                        <?php
+                                        $sql = "SELECT * FROM TB_PROPIETARIO";
+                                        $result = mysqli_query($conexion, $sql);
+                                        while ($mostrar = mysqli_fetch_array($result)) {
+                                        ?>
+                                            <option value=<?php echo $mostrar['PROPIETARIO_ID']; ?>><?php echo $mostrar['NOMBRE1']." ".$mostrar['NOMBRE2']." ".$mostrar['NOMBRE3']." ".$mostrar['APELLIDO1']." ".$mostrar['APELLIDO2']." ".$mostrar['APELLIDO3']; ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
 
 
                             <div class="col-md-4">
@@ -144,9 +172,16 @@ if (isset($_SESSION['usuario'])) {
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="btnGuardarVehiculo">Guardar</button>
+                <div class="modal-footer" id="botones">
+                    <button type="button" class="btn btn-secondary"  data-dismiss="modal">Cerrar</button>
+                    <button type="button"  class="btn btn-primary" id="btnGuardarVehiculo">Guardar</button>
+                    
+                   
+                </div>
+                <div class="modal-footer" id="botones1">
+                   
+                    <div id="pdfinyect"></div>
+                   
                 </div>
             </div>
         </div>
@@ -179,11 +214,19 @@ if (isset($_SESSION['usuario'])) {
 
 
         function RESETFORM() {
-
+            $('#botones1').hide();
+            $('#botones').show()
             $("#frmVehiculo")[0].reset();
 
-            var imagenHTML = "<img  src='../fotosPersonas/defaultpersona.png' width='80%'>";
+            var imagenHTML = "<img  src='../fotosVehiculos/defaultvehiculo.png' width='80%'>";
             $('#files').html(imagenHTML);
+        }
+
+        function pdf() {
+            var v = $('#IdVehiculo').val();
+            var pdf = ' <a href="../clases/generarpdfVehiculo.php?valor=' + v + '" target="_blank" class="btn btn-success"><span class="fa fa-file-pdf"></span>  PDF</a>'
+            $('#pdfinyect').html(pdf);
+           
         }
     </script>
 <?php

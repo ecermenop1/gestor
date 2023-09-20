@@ -6,18 +6,21 @@
 	$conexion = $c->conexion();
 	$idUsuario = $_SESSION['idUsuario'];
 	$sql = "SELECT 
-					id_archivo as idArchivo,
-				nombre as nombreArchivo,
-				tipo as tipoArchivo,
-					ruta as rutaArchivo,
-					fecha as fecha,
-					NUMERO_CASO,
-					NUMERO_OFICIO,
-					ASUNTO,
-					FECHA_OFICIO
+					A. id_archivo as idArchivo,
+				A. nombre as nombreArchivo,
+				A. tipo as tipoArchivo,
+					A.ruta as rutaArchivo,
+					A.fecha as fecha,
+					A. NUMERO_CASO,
+					A. NUMERO_OFICIO,
+					A. ASUNTO,
+					A. FECHA_OFICIO
+					
 					
 				FROM
-					t_archivos ";
+					t_archivos AS A, tb_caso AS C
+					WHERE A.NUMERO_CASO=C.NUMERO_CASO
+					AND C.ESTADO='ACTIVO'";
 	$result = mysqli_query($conexion, $sql);
 
  ?>

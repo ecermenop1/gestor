@@ -6,6 +6,7 @@
 	 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="librerias/bootstrap4/bootstrap.min.css">
+    <link rel="icon"  type="image/jpeg" href="img/Logo PNC.JPEG">
 </head>
 <body>
 	<div class="wrapper fadeInDown">

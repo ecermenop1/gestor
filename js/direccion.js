@@ -9,15 +9,21 @@ function AddDirecciones() {
 		swal("Llenar Todos los campos que son obligatorios");
 		return false;
 	} else {
+		var formData = new FormData(document.getElementById('frmDirecciones'));
 		$.ajax({
 			type:"POST",
             data:$('#frmDirecciones').serialize(),
 			
 			url:"../procesos/categorias/agregarDirecciones.php",
-			
+			type: "POST",
+			datatype: "html",
+			data: formData,
+			cache: false,
+			contentType: false,
+			processData: false,
 			success:function(respuesta){
 				respuesta = respuesta.trim();
-               // alert(respuesta);
+              // alert(respuesta);
 				if (respuesta == 1) {
                     $("#frmDirecciones")[0].reset();
 				
@@ -35,7 +41,8 @@ function AddDirecciones() {
 
 
 function obtenerDatosDireccion($id) {
-
+	$('#botones1').hide();
+	$('#botones').show();
 	$.ajax({
 		type: "POST",
 		data: { "idDireccion": $id },
@@ -43,7 +50,42 @@ function obtenerDatosDireccion($id) {
 		success: function (respuesta) {
 			//alert(respuesta)
 			respuesta = jQuery.parseJSON(respuesta);
+			var imagenHTML = "<img  src='"+respuesta['RUTA_IMAGEN']+"' width='80%'>";
+			$('#files').html(imagenHTML);
 			$('#IdDireccion').val(respuesta['DIRECCION_ID']);
+			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
+			$('#NumeroOficio').val(respuesta['NUMERO_OFICIO']);
+			$('#Calle').val(respuesta['CALLE']);
+			$('#Avenida').val(respuesta['AVENIDA']);
+			$('#NumeroCasa').val(respuesta['NUMERO_CASA']);
+			$('#Zona').val(respuesta['ZONA']);
+			$('#IdMunicipio').val(respuesta['MUNICIPIO_ID']);
+			$('#IdDepartamento').val(respuesta['DEPARTAMENTO_ID']);
+			$('#IdPais').val(respuesta['PAIS_ID']);
+			$('#IdLugarPoblado').val(respuesta['LUGARPOBLADO_ID']);
+			$('#Latitud').val(respuesta['LATITUD']);
+			$('#Longitud').val(respuesta['LONGITUD']);
+			$('#IdMedidor').val(respuesta['MEDIDOR_ID']);
+			$('#Observaciones').val(respuesta['OBSERVACIONES']);
+			//$('#categoriaU').val(respuesta['nombreCategoria']);
+		}
+	})
+ }
+
+ function VisualizarDatosDireccion($id) {
+	$('#botones').hide();
+	$('#botones1').show();
+	$.ajax({
+		type: "POST",
+		data: { "idDireccion": $id },
+		url: "../procesos/categorias/obtenerDireccion.php",
+		success: function (respuesta) {
+			//alert(respuesta)
+			respuesta = jQuery.parseJSON(respuesta);
+			var imagenHTML = "<img  src='"+respuesta['RUTA_IMAGEN']+"' width='80%'>";
+			$('#files').html(imagenHTML);
+			$('#IdDireccion').val(respuesta['DIRECCION_ID']);
+			pdf();
 			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
 			$('#NumeroOficio').val(respuesta['NUMERO_OFICIO']);
 			$('#Calle').val(respuesta['CALLE']);

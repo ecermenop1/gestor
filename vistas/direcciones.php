@@ -12,14 +12,14 @@ if (isset($_SESSION['usuario'])) {
 ?>
 
 
-<div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Direcciones</h1>
 
             <div class="row">
                 <div class="col-sm-4">
-                    <span class="btn btn-warning" data-toggle="modal" data-target="#modalAgregarDirecciones">
-                        <span class="fas fa-plus-circle"></span>  Dirección
+                    <span class="btn btn-warning" data-toggle="modal" onclick=" RESETFORM()" data-target="#modalAgregarDirecciones">
+                        <span class="fas fa-plus-circle"></span> Dirección
                     </span>
                 </div>
             </div>
@@ -45,10 +45,24 @@ if (isset($_SESSION['usuario'])) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="frmDirecciones" >
+                    <form id="frmDirecciones" enctype="multipart/form-data">
                         <div class="form-row">
-                        <input type="hidden" class="form-control" id="IdDireccion" name="IdDireccion" placeholder="Obligatorio  " required>
-                        <div class="col-md-4">
+                            <input type="hidden" class="form-control"  id="IdDireccion" name="IdDireccion" placeholder="Obligatorio  " required>
+                            <div class="col-md-12">
+
+
+
+                                <div class="form-group" id="files" style="width: 200px;
+                                    height: 400px,400px;
+                                    margin:auto;
+                                    background-color: #f0f0f0; 
+                                    border-radius: 20px 20px 20px 20px; 
+                                    overflow: hidden;">
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="nombre1">Número de Caso:</label>
                                     <input type="number" class="form-control" id="NumeroCaso" name="NumeroCaso" placeholder="Obligatorio  " required>
@@ -85,10 +99,10 @@ if (isset($_SESSION['usuario'])) {
                                 </div>
                             </div>
 
-                            
+
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <label for="input1">Municipio:</label>
+                                    <label for="input1">Municipio:</label>
                                     <select id="IdMunicipio" name="IdMunicipio" class="form-control" id="specificSizeSelect">
                                         <option selected value="">Seleccionar Municipio</option>
                                         <?php
@@ -106,7 +120,7 @@ if (isset($_SESSION['usuario'])) {
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <label for="input1">Lugar Poblado:</label>
+                                    <label for="input1">Lugar Poblado:</label>
                                     <select id="IdLugarPoblado" name="IdLugarPoblado" class="form-control" id="specificSizeSelect">
                                         <option selected value="">Seleccionar Lugar Poblado</option>
                                         <?php
@@ -123,7 +137,7 @@ if (isset($_SESSION['usuario'])) {
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <label for="input1">Departamento:</label>
+                                    <label for="input1">Departamento:</label>
                                     <select id="IdDepartamento" name="IdDepartamento" class="form-control" id="specificSizeSelect">
                                         <option selected value="">Seleccionar Departamento</option>
                                         <?php
@@ -143,7 +157,7 @@ if (isset($_SESSION['usuario'])) {
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <label for="input1">Pais:</label>
+                                    <label for="input1">Pais:</label>
                                     <select id="IdPais" name="IdPais" class="form-control" id="specificSizeSelect">
                                         <option selected value="">Seleccionar Pais</option>
                                         <?php
@@ -175,7 +189,7 @@ if (isset($_SESSION['usuario'])) {
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <label for="input1">Medidor:</label>
+                                    <label for="input1">Medidor:</label>
                                     <select id="IdMedidor" name="IdMedidor" class="form-control" id="specificSizeSelect">
                                         <option selected value="">Seleccionar Pais</option>
                                         <?php
@@ -198,13 +212,27 @@ if (isset($_SESSION['usuario'])) {
                                 </div>
                             </div>
 
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="input1"> Fotografia:</label>
+                                    <input type="file" name="imagen" multiple="multiple" class="form-control" id="imagen" placeholder="Opcional">
+                                </div>
+
+                            </div>
 
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" id="botones">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary" id="btnGuardarDirecciones">Guardar</button>
+
+
+                </div>
+                <div class="modal-footer" id="botones1">
+
+                    <div id="pdfinyect"></div>
+
                 </div>
             </div>
         </div>
@@ -234,6 +262,25 @@ if (isset($_SESSION['usuario'])) {
             	actualizaCategoria();
             });*/
         });
+
+
+
+        function RESETFORM() {
+            $('#botones1').hide();
+            $('#botones').show()
+            $("#frmDirecciones")[0].reset();
+
+            var imagenHTML = "<img  src='../fotosDirecciones/defaultdireciones.png' width='80%'>";
+            $('#files').html(imagenHTML);
+        }
+
+
+        function pdf() {
+            var v = $('#IdDireccion').val();
+            var pdf = ' <a href="../clases/generarpdfDireccion.php?valor=' + v + '" target="_blank" class="btn btn-success"><span class="fa fa-file-pdf"></span>  PDF</a>'
+            $('#pdfinyect').html(pdf);
+
+        }
     </script>
 <?php
 } else {

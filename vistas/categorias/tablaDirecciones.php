@@ -23,6 +23,7 @@ $conexion = $conexion->conexion();
 				<th>LATITUD</th>
 				<th>LONGITUD</th>
 				<th>OBSERVACIONES</th>
+				<th>VISUALIZAR</th>
 					<th>EDITAR</th>
 					<?php if ($_SESSION['RolUsuario'] == "ADMINISTRADOR") { ?>
 					<th>ELIMINAR</th>
@@ -67,6 +68,10 @@ $conexion = $conexion->conexion();
 					<td><?php echo $mostrar['LONGITUD']; ?></td>
 					<td><?php echo $mostrar['OBSERVACIONES']; ?></td>
 					
+					<td>
+							<span class="btn btn-primary btn-sm"onclick="VisualizarDatosDireccion('<?php echo $mostrar['DIRECCION_ID'] ?>')" data-toggle="modal" data-target="#modalAgregarDirecciones">
+								<span class="fas fa-eye"></span>
+						</td>
 						<td>
 							<span class="btn btn-warning btn-sm" onclick="obtenerDatosDireccion('<?php echo $mostrar['DIRECCION_ID'] ?>')" data-toggle="modal" data-target="#modalAgregarDirecciones">
 								<span class="fas fa-edit"></span>

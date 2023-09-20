@@ -39,7 +39,7 @@ if (isset($_SESSION['usuario'])) {
         <div class="modal-dialog " role="document" style="max-width: 70%;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nueva Dirección</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Caso</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -55,12 +55,7 @@ if (isset($_SESSION['usuario'])) {
                                     <input type="text" class="form-control" id="NumeroCaso" name="NumeroCaso" placeholder="Obligatorio  " required>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="nombre1">MUMERO CASO:</label>
-                                    <input type="text" class="form-control" id="NumeroCaso" name="NumeroCaso" placeholder="Obligatorio  " required>
-                                </div>
-                            </div>
+                           
 
                             <div class="col-md-4">
                                 <div class="form-group">

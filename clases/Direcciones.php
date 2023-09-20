@@ -21,14 +21,15 @@ class Direcciones extends Conectar
                                             LATITUD,
                                             LONGITUD,
                                             OBSERVACIONES,
+                                            RUTA_IMAGEN,
                                             MEDIDOR_ID,
                                             USUARIO
 
                                           ) 
-							VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+							VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $query = $conexion->prepare($sql);
         $query->bind_param(
-            "sssssisiiisssis",
+            "sssssisiiissssis",
             $datos['NumeroCaso'],
             $datos['NumeroOficio'],
             $datos['Calle'],
@@ -42,6 +43,7 @@ class Direcciones extends Conectar
             $datos['Latitud'],
             $datos['Longitud'],
             $datos['Observaciones'],
+            $datos['RutaImagen'],
             $datos['IdMedidor'],
             $datos['idUsuario'],
             
@@ -73,11 +75,12 @@ class Direcciones extends Conectar
                                             LATITUD =?,
                                             LONGITUD =?,
                                             OBSERVACIONES =?,
+                                            RUTA_IMAGEN=?,
                                             MEDIDOR_ID =?,
                                             USUARIO =?
                                             WHERE DIRECCION_ID =?";
                                            $query = $conexion->prepare($sql);
-                                            $query->bind_param("sssssisiiisssisi", 
+                                            $query->bind_param("sssssisiiissssiii", 
                                             $datos['NumeroCaso'],
                                             $datos['NumeroOficio'],
                                             $datos['Calle'],
@@ -91,6 +94,7 @@ class Direcciones extends Conectar
                                             $datos['Latitud'],
                                             $datos['Longitud'],
                                             $datos['Observaciones'],
+                                            $datos['RutaImagen'],
                                             $datos['IdMedidor'],
                                             $datos['idUsuario'],
                                             $datos['IdDireccion']

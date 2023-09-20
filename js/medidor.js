@@ -51,7 +51,7 @@ function obtenerDatosMedidor($id) {
 }
 
 function eliminarMedidor(idMedidor) {
-	alert(idMedidor)
+	//alert(idMedidor)
 	swal({
 	  title: "Estas seguro de eliminar este Registro?",
 	  text: "Una vez eliminado, no podra recuperarse!",

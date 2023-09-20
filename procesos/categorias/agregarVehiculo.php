@@ -16,7 +16,11 @@ $imagenNombre = $_FILES["imagen"]["name"];
 $imagenTipo = $_FILES["imagen"]["type"];
 $imagenTmp = $_FILES["imagen"]["tmp_name"];  
 $imagenError = $_FILES["imagen"]["error"];
-    
+  
+
+if($imagenNombre==""){
+    $imagenNombre='defaultvehiculo.png';
+}
     // Directorio donde se guardarán las imágenes en el servidor
     $rutaFinal = $CarpetaImagenesVehiculos . "/" . $imagenNombre;
     $rutaFinalimagen = "../fotosVehiculos" . "/" . $imagenNombre;
@@ -34,6 +38,9 @@ $imagenError = $_FILES["imagen"]["error"];
             "LineaVehiculo" => $_POST['LineaVehiculo'],
             "Modelo" => $_POST['Modelo'],
             "ColorVehiculo" => $_POST['ColorVehiculo'],
+            "IdPropietario" => $_POST['IdPropietario'],
+            "NumeroChasis" => $_POST['NumeroChasis'],
+            "NumeroMotor" => $_POST['NumeroMotor'],
             "RutaImagen" => $rutaFinalimagen,
             "imagenNombre" => $imagenNombre
 

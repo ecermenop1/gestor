@@ -16,6 +16,11 @@ $imagenNombre = $_FILES["imagen"]["name"];
 $imagenTipo = $_FILES["imagen"]["type"];
 $imagenTmp = $_FILES["imagen"]["tmp_name"];  
 $imagenError = $_FILES["imagen"]["error"];
+
+
+if($imagenNombre==""){
+    $imagenNombre='defaultpersona.png';
+}
     
     // Directorio donde se guardarán las imágenes en el servidor
     $rutaFinal = $CarpetaImagenesPersonas . "/" . $imagenNombre;

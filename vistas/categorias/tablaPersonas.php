@@ -30,7 +30,7 @@ $conexion = $conexion->conexion();
 				<th>NOMBRE_MADRE</th>
 				<th>INUMERO_CELULAR </th>
 				<th>ALIAS</th>
-				<th>ALIAS</th>
+				<th>EDAD</th>
 				
 					<th>DESCARGAR</th>
 					<th>VISUALIZAR</th>
@@ -81,8 +81,9 @@ $conexion = $conexion->conexion();
 						</td>
 					
 						<td>
-							<span class="btn btn-primary btn-sm" onclick="visualizarpersona('<?php echo $mostrar['PROPIETARIO_ID'] ?>')" data-toggle="modal" data-target="#modalAgregaPersona">
+							<span class="btn btn-primary btn-sm"  onclick="visualizarpersona('<?php echo $mostrar['PROPIETARIO_ID'] ?>')" data-toggle="modal" data-target="#modalAgregaPersona">
 								<span class="fas fa-eye"></span>
+								
 							</span>
 						</td>
 						<td>

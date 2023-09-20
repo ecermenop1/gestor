@@ -51,7 +51,7 @@ function obtenerDatosMunicipio($id) {
 
 
  function eliminarMunicipio(idMunicipio) {
-	alert(idMunicipio)
+	//alert(idMunicipio)
 	swal({
 	  title: "Estas seguro de eliminar este Registro?",
 	  text: "Una vez eliminado, no podra recuperarse!",

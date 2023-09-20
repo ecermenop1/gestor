@@ -16,12 +16,15 @@ class Vehiculos extends Conectar
                                             LINEA_VEHICULO,
                                             MODELO_VEHICULO,
                                             COLOR_VEHICULO,
+                                            NUMERO_CHASIS,
+                                            NUMERO_MOTOR,
+                                            PROPIETARIO_ID,
                                             FOTO_VEHICULO
                                           ) 
-							VALUES (?,?,?,?,?,?,?,?,?)";
+							VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         $query = $conexion->prepare($sql);
         $query->bind_param(
-            "sssssssss",
+            "ssssssssssis",
             $datos['NumeroCaso'],
             $datos['NumeroOficio'],
             $datos['Placa'],
@@ -30,6 +33,9 @@ class Vehiculos extends Conectar
             $datos['LineaVehiculo'],
             $datos['Modelo'],
             $datos['ColorVehiculo'],
+            $datos['NumeroChasis'],
+            $datos['NumeroMotor'],
+            $datos['IdPropietario'],
             $datos['RutaImagen'],
                 
         );
@@ -51,10 +57,13 @@ class Vehiculos extends Conectar
                                             LINEA_VEHICULO=?,
                                             MODELO_VEHICULO=?,
                                             COLOR_VEHICULO=?,
+                                            NUMERO_CHASIS=?,
+                                            NUMERO_MOTOR=?,
+                                            PROPIETARIO_ID=?,
                                             FOTO_VEHICULO=?
                                             WHERE ID_VEHICULO =?";
                                            $query = $conexion->prepare($sql);
-                                            $query->bind_param("sssssssssi", 
+                                            $query->bind_param("ssssssssssisi", 
                                             $datos['NumeroCaso'],
                                             $datos['NumeroOficio'],
                                             $datos['Placa'],
@@ -63,6 +72,9 @@ class Vehiculos extends Conectar
                                             $datos['LineaVehiculo'],
                                             $datos['Modelo'],
                                             $datos['ColorVehiculo'],
+                                            $datos['NumeroChasis'],
+                                            $datos['NumeroMotor'],
+                                            $datos['IdPropietario'],
                                             $datos['RutaImagen'],
                                             $datos['IdVehiculo'],);
         $respuesta = $query->execute();

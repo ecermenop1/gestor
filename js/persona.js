@@ -42,7 +42,10 @@ function AddPersonas() {
 
 
 function obtenerDatosPersona($id) {
+
+	$('#botones1').hide();
 	$('#botones').show()
+	
 	$.ajax({
 		type: "POST",
 		data: { "idpersona": $id },
@@ -61,6 +64,7 @@ function obtenerDatosPersona($id) {
 			$('#edadcalculada').html(EDADHTML);
 			
 			$('#IdPropietario').val(respuesta['PROPIETARIO_ID']);
+			
 			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
 			$('#NumeroOficio').val(respuesta['NUMERO_OFICIO']);
 			$('#Nombre1').val(respuesta['NOMBRE1']);
@@ -82,7 +86,7 @@ function obtenerDatosPersona($id) {
 			$('#Telefono').val(respuesta['NUMERO_CELULAR']);
 			$('#Alias').val(respuesta['ALIAS']);
 			$('#imagen').val(respuesta['RUTA_FOTO']);
-
+			
 			
 			//$('#categoriaU').val(respuesta['nombreCategoria']);
 		}
@@ -92,7 +96,9 @@ function obtenerDatosPersona($id) {
 
 
 function visualizarpersona($id) {
-	$('#botones').hide()
+	
+	$('#botones').hide();
+	$('#botones1').show();
 	$.ajax({
 		type: "POST",
 		data: { "idpersona": $id },
@@ -111,6 +117,7 @@ function visualizarpersona($id) {
 			$('#edadcalculada').html(EDADHTML);
 			
 			$('#IdPropietario').val(respuesta['PROPIETARIO_ID']);
+			pdf();
 			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
 			$('#NumeroOficio').val(respuesta['NUMERO_OFICIO']);
 			$('#Nombre1').val(respuesta['NOMBRE1']);
@@ -141,7 +148,7 @@ function visualizarpersona($id) {
 }
 
 function eliminarPersona(idPersona) {
-	alert(idPersona)
+	//alert(idPersona)
 	swal({
 	  title: "Estas seguro de eliminar este Registro?",
 	  text: "Una vez eliminado, no podra recuperarse!",

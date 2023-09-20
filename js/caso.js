@@ -60,7 +60,7 @@ function obtenerDatosCaso(idCaso) {
 
 
 function eliminarCaso(idCaso) {
-	alert(idCaso)
+	//alert(idCaso)
 	swal({
 	  title: "Estas seguro de eliminar este Registro?",
 	  text: "Una vez eliminado, no podra recuperarse!",
@@ -77,7 +77,7 @@ function eliminarCaso(idCaso) {
 				data: { "idCaso": idCaso },
 	    		url:"../procesos/categorias/eliminarCaso.php",
 	    		success:function(respuesta){
-					alert(respuesta);
+					//alert(respuesta);
 	    			respuesta = respuesta.trim();
 					
 	    			if (respuesta == 1) {

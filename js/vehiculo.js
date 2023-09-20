@@ -3,7 +3,7 @@ function AddVehiculo() {
 	
 	if ($('#NumeroCaso').val()== ""  ||$('#Placa').val() == "" || $('#TipoVehiculo').val() == "" ||
 		$('#MarcaVehiculo').val() == "" || $('#LineaVehiculo').val() == "" ||
-		$('#Modelo').val() == "" || $('#ColorVehiculo').val() == ""|| $('#NumeroOficio').val() == "" ) {
+		$('#Modelo').val() == "" || $('#ColorVehiculo').val() == ""|| $('#NumeroOficio').val() == ""|| $('#IdPropietario').val() == "" ) {
 		swal("Todos los campos son obligatorios");
 		return false;
 	} else {
@@ -21,7 +21,7 @@ function AddVehiculo() {
 			processData: false,
 			success: function (respuesta) {
 				respuesta = respuesta.trim();
-				alert(respuesta);
+				//alert(respuesta);
 				if (respuesta == 1) {
 					$("#frmVehiculo")[0].reset();
 					$('#tablaVehiculos').load("categorias/tablaVehiculos.php");
@@ -45,7 +45,8 @@ function AddVehiculo() {
 
 
 function obtenerDatosVehiculos($id) {
-	
+	$('#botones1').hide();
+	$('#botones').show()
 	$.ajax({
 		type: "POST",
 		data: { "idVehiculo": $id },
@@ -63,6 +64,42 @@ function obtenerDatosVehiculos($id) {
 			$('#LineaVehiculo').val(respuesta['LINEA_VEHICULO']);
 			$('#Modelo').val(respuesta['MODELO_VEHICULO']);
 			$('#ColorVehiculo').val(respuesta['COLOR_VEHICULO']);
+			$('#NumeroChasis').val(respuesta['NUMERO_CHASIS']);
+			$('#NumeroMotor').val(respuesta['NUMERO_MOTOR']);
+			$('#IdPropietario').val(respuesta['PROPIETARIO_ID']);
+			$('#imagen').val(respuesta['FOTO_VEHICULO']);
+			
+			//$('#categoriaU').val(respuesta['nombreCategoria']);
+		}
+	})
+}
+
+
+function visualizarDatosVehiculos($id) {
+	$('#botones').hide();
+	$('#botones1').show();
+
+	$.ajax({
+		type: "POST",
+		data: { "idVehiculo": $id },
+		url: "../procesos/categorias/obtenerVehiculo.php",
+		success: function (respuesta) {
+			respuesta = jQuery.parseJSON(respuesta);
+			var imagenHTML = "<img  src='"+respuesta['FOTO_VEHICULO']+"' width='80%'>";
+			$('#files').html(imagenHTML);
+			$('#NumeroCaso').val(respuesta['NUMERO_CASO']);
+			$('#NumeroOficio').val(respuesta['NUMERO_OFICIO']);
+			$('#IdVehiculo').val(respuesta['ID_VEHICULO']);
+			pdf();
+			$('#Placa').val(respuesta['PLACA']);
+			$('#TipoVehiculo').val(respuesta['TIPO_VEHICULO']);
+			$('#MarcaVehiculo').val(respuesta['MARCA_VEHICULO']);
+			$('#LineaVehiculo').val(respuesta['LINEA_VEHICULO']);
+			$('#Modelo').val(respuesta['MODELO_VEHICULO']);
+			$('#ColorVehiculo').val(respuesta['COLOR_VEHICULO']);
+			$('#NumeroChasis').val(respuesta['NUMERO_CHASIS']);
+			$('#NumeroMotor').val(respuesta['NUMERO_MOTOR']);
+			$('#IdPropietario').val(respuesta['PROPIETARIO_ID']);
 			$('#imagen').val(respuesta['FOTO_VEHICULO']);
 			
 			//$('#categoriaU').val(respuesta['nombreCategoria']);
@@ -72,7 +109,7 @@ function obtenerDatosVehiculos($id) {
 
 
 function eliminarVehiculo(idVehiculo) {
-	alert(idVehiculo)
+	
 	swal({
 	  title: "Estas seguro de eliminar este Registro?",
 	  text: "Una vez eliminado, no podra recuperarse!",
@@ -89,7 +126,6 @@ function eliminarVehiculo(idVehiculo) {
 				data: { "idVehiculo": idVehiculo },
 	    		url:"../procesos/categorias/eliminarVehiculo.php",
 	    		success:function(respuesta){
-					alert(respuesta);
 	    			respuesta = respuesta.trim();
 					
 	    			if (respuesta == 1) {

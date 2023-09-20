@@ -55,7 +55,7 @@ $conexion = $conexion->conexion();
 							</a>
 						</td>
 						<td>
-							<span class="btn btn-primary btn-sm" data-toggle="modal" data-target="#visualizarArchivo" onclick="obtenerImagen('<?php echo  $mostrar['FOTO_VEHICULO'] ?>')">
+							<span class="btn btn-primary btn-sm"onclick="visualizarDatosVehiculos('<?php echo $mostrar['ID_VEHICULO'] ?>')" data-toggle="modal" data-target="#modalAgregaVehiculo">
 								<span class="fas fa-eye"></span>
 						</td>
 						<td>
@@ -80,12 +80,7 @@ $conexion = $conexion->conexion();
 </div>
 
 <script type="text/javascript">
-	function obtenerImagen(rutaimagen) {
-		var imagenHTML = "<img  src='" + rutaimagen + "' width='80%'>";
-
-		$("#imagenobtenida").html(imagenHTML);
-
-	};
+	
 
 
 
